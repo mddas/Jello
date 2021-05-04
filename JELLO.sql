@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2021 at 01:42 PM
+-- Generation Time: May 04, 2021 at 04:29 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `admin_mobilenumber` int(15) DEFAULT NULL,
   `admin_image` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_mobilenumber`, `admin_image`) VALUES
+(1, 'manoj', 'mddasgudiya@gmail.com', 122, 98080, 'f');
 
 -- --------------------------------------------------------
 
@@ -69,14 +76,13 @@ CREATE TABLE `customer_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category`
+-- Table structure for table `main_category`
 --
 
-CREATE TABLE `product_category` (
+CREATE TABLE `main_category` (
   `category_id` int(3) NOT NULL,
   `category_name` varchar(55) NOT NULL,
-  `category_title` int(255) DEFAULT NULL,
-  `category_description` varchar(1000) DEFAULT NULL,
+  `category_description` varchar(255) DEFAULT NULL,
   `category_image` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -139,7 +145,7 @@ CREATE TABLE `size` (
 
 CREATE TABLE `sub_category` (
   `sub_categoryid` int(3) NOT NULL,
-  `which_category` varchar(30) NOT NULL,
+  `which_main_category` varchar(30) NOT NULL,
   `sub_categoryname` varchar(55) NOT NULL,
   `sub_categorydescription` varchar(1000) DEFAULT NULL,
   `sub_catogeryimage` varchar(55) DEFAULT NULL
@@ -153,6 +159,7 @@ CREATE TABLE `sub_category` (
 
 CREATE TABLE `sub_sub_category` (
   `sub_sub_id` int(5) NOT NULL,
+  `which_main_category` varchar(55) NOT NULL,
   `which_sub_category` varchar(30) NOT NULL,
   `sub_sub_name` int(55) NOT NULL,
   `sub_sub_description` int(200) DEFAULT NULL,
@@ -176,9 +183,9 @@ ALTER TABLE `customer_detail`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `product_category`
+-- Indexes for table `main_category`
 --
-ALTER TABLE `product_category`
+ALTER TABLE `main_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
@@ -220,7 +227,7 @@ ALTER TABLE `sub_sub_category`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer_detail`
@@ -229,9 +236,9 @@ ALTER TABLE `customer_detail`
   MODIFY `customer_id` int(44) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product_category`
+-- AUTO_INCREMENT for table `main_category`
 --
-ALTER TABLE `product_category`
+ALTER TABLE `main_category`
   MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT;
 
 --

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/menu_categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 May 2021 13:38:58 GMT -->
+<!-- Mirrored from multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/add_new_menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 May 2021 13:38:57 GMT -->
 <head>
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -690,13 +690,13 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h4 class="page-title">Menu Categories</h4>
+					<h4 class="page-title">Add/Edit Menu</h4>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Menu</li>
-								<li class="breadcrumb-item active" aria-current="page">Menu Categories</li>
+								<li class="breadcrumb-item active" aria-current="page">Add/Edit</li>
 							</ol>
 						</nav>
 					</div>
@@ -706,347 +706,142 @@
 		</div>
 
 		<!-- Main content -->
+		<!------add categpry---->
 		<section class="content">
 			<div class="row">
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/sandwich.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Sandwich</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Burger"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
+			  <div class="col-12">
+				<div class="box">
+				  <div class="box-body">
+					<form action="add_category_insert.php" method="POST">
+						<div class="form-body">
+							<!--/row-->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Category</label>
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type" onchange="findcategory(this.value)">
+											<option value="main_category">Main Category</option>
+											<option value="sub_category">Sub Category</option>
+											<option value="sub_sub_category">Sub Sub-Category</option>
+					
+										</select>
 									</div>
 								</div>
+								<!--/span-->
+								
+								<!--/span-->
 							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/salads.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Salads</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Carrot"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/burgers.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Burgers</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Burger"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/pizza.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Pizza's</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Pizza"></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/soups.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Soups</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Miso-soup"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/main.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Main Course</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Dinner1"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/noodles.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Noodles</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Sushi"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/rice.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Rice</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Miso-soup"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/starters.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Starters</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Fish"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/subziyan.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Subziyan</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Miso-soup"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/dals.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Dals</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Miso-soup"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/breads.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Breads</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-French-Bread"></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/biryanis.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Pulao / Biryanis</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Miso-soup"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/dessert.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Dessert</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Ice-cream1"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/mocktails.jpg" alt="">
-							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Smoothies & Mocktails</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Wine"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
-									</div>
-								</div>
+							<!--/row-->
 
+							<!--/row-->
+							<div class="row">
+								<div class="col-md-6" id="main_category">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Main Category</label>
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type">
+											<option value="men">Men</option>
+											<option value="women">Women</option>
+											<option value="child">Child</option>
+					
+										</select>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-6" id="sub_category">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Sub Category</label>
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type">
+											<option value="shoes">shoes</option>
+											<option value="clothing">clothing</option>
+											<option value="Accessories">Accessories</option>
+					
+										</select>
+									</div>
+								</div>
+								<!--/span-->
 							</div>
-						</div>							
-					</div>
-				</div>
-				<div class="col-xxxl-4 col-xl-6 col-lg-6 col-12">
-					<div class="box overflow-h">
-						<div class="box-body p-0">
-							<div>
-								<img class="rounded img-fluid" src="../images/food/icecream.jpg" alt="">
+							<!--/row-->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label class="fw-700 fs-16 form-label">Category Name</label>
+									  <input type="text" class="form-control" placeholder="Category Name" name="category_name">
+									</div>
+								</div>
+									<!--/span-->
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="fw-700 fs-16 form-label">Status</label>
+											<div class="radio-list">
+												<label class="radio-inline p-0 me-10">
+													<div class="radio radio-info">
+														<input type="radio" name="category_status" id="radio1" value="published">
+														<label for="radio1">Published</label>
+													</div>
+												</label>
+												<label class="radio-inline">
+													<div class="radio radio-info">
+														<input type="radio" name="category_status" id="radio2" value="draft">
+														<label for="radio2">Draft</label>
+													</div>
+												</label>
+											</div>
+										</div>
+									</div>
+									<!--/span-->
+								
 							</div>
-						</div>
-						<div class="box-body">
-							<div class="info-content">
-								<h4 class="mb-10 mt-0">Ice Cream</h4>
-								<div class="d-flex justify-content-between align-items-center">
-									<h4 class="mb-0 text-primary">$6.53 to $10.99</h4>
-									<div class="d-flex align-items-center">	
-										<span class="fs-18 mx-10 text-primary icon-Ice-cream"><span class="path1"></span><span class="path2"></span></span>
-										<h5 class="text-black mb-0">12 Item</h5>
+							<!--/row-->
+							
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Ingredients and Description</label>
+										<textarea class="form-control p-20" rows="4" name="category_description">Description of Category</textarea>
 									</div>
 								</div>
 							</div>
-						</div>							
-					</div>
+							<!--/row-->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Meta Title</label>
+										<input type="text" class="form-control" name="matatitle"> </div>
+								</div>
+								<!--/span-->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="fw-700 fs-16 form-label">Meta Keyword</label>
+										<input type="text" class="form-control" name="metakeyword"> </div>
+								</div>
+								<!--/span-->
+								<div class="col-md-3">
+									<h4 class="box-title mt-20">Uploaded Image</h4>
+									<div class="product-img text-start">
+										<!---
+										<img src="../images/product/product-9.png" alt="" class="mb-15">
+										<p>Upload Anonther Image</p>
+										------>
+										<div class="btn btn-info mb-20">
+                                            <input type="file" class="upload" name="image"> 
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="form-actions mt-10">
+							<button type="submit" class="btn btn-primary" name="add"> <i class="fa fa-check"></i> Save/Add</button>
+							<button type="button" class="btn btn-danger">Cancel</button>
+						</div>
+					</form>
+				  </div>
 				</div>
-		    </div>
+			  </div>		  
+		  </div>
 		</section>
+		<!------end add categpry---->
 		<!-- /.content -->
 	  
 	  </div>
@@ -1598,9 +1393,10 @@
 	<!-- Riday Admin App -->
 	<script src="js/template.js"></script>
 	
-	
+	<!---md customize javascrip---->
+	<script src="js/md.js"></script>
 
 </body>
 
-<!-- Mirrored from multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/menu_categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 May 2021 13:39:04 GMT -->
+<!-- Mirrored from multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/add_new_menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 May 2021 13:38:58 GMT -->
 </html>
