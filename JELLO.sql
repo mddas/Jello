@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2021 at 04:29 PM
+-- Generation Time: May 05, 2021 at 11:15 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -83,8 +83,16 @@ CREATE TABLE `main_category` (
   `category_id` int(3) NOT NULL,
   `category_name` varchar(55) NOT NULL,
   `category_description` varchar(255) DEFAULT NULL,
-  `category_image` int(100) DEFAULT NULL
+  `category_image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `main_category`
+--
+
+INSERT INTO `main_category` (`category_id`, `category_name`, `category_description`, `category_image`) VALUES
+(7, 'men', 'Description of Category', 'image'),
+(8, 'women', 'Description of Category', 'image');
 
 -- --------------------------------------------------------
 
@@ -151,6 +159,14 @@ CREATE TABLE `sub_category` (
   `sub_catogeryimage` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sub_category`
+--
+
+INSERT INTO `sub_category` (`sub_categoryid`, `which_main_category`, `sub_categoryname`, `sub_categorydescription`, `sub_catogeryimage`) VALUES
+(6, 'men', 'shoes', 'Description of Category', 'image'),
+(7, 'men', 'clothing', 'Description of Category', 'image');
+
 -- --------------------------------------------------------
 
 --
@@ -161,10 +177,17 @@ CREATE TABLE `sub_sub_category` (
   `sub_sub_id` int(5) NOT NULL,
   `which_main_category` varchar(55) NOT NULL,
   `which_sub_category` varchar(30) NOT NULL,
-  `sub_sub_name` int(55) NOT NULL,
-  `sub_sub_description` int(200) DEFAULT NULL,
-  `sub_sub_image` int(100) DEFAULT NULL
+  `sub_sub_name` varchar(55) NOT NULL,
+  `sub_sub_description` varchar(200) DEFAULT NULL,
+  `sub_sub_image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sub_sub_category`
+--
+
+INSERT INTO `sub_sub_category` (`sub_sub_id`, `which_main_category`, `which_sub_category`, `sub_sub_name`, `sub_sub_description`, `sub_sub_image`) VALUES
+(4, 'men', 'men', 'gaming shoes', 'Description of Category', 'image');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +262,7 @@ ALTER TABLE `customer_detail`
 -- AUTO_INCREMENT for table `main_category`
 --
 ALTER TABLE `main_category`
-  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product_detail`
@@ -251,13 +274,13 @@ ALTER TABLE `product_detail`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_category`
 --
 ALTER TABLE `sub_sub_category`
-  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

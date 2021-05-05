@@ -1,3 +1,7 @@
+<?php
+include("Database_control.php");
+$db=new Database();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +27,7 @@
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
 	
 <div class="wrapper">
-	<div id="loader"></div>
+	<!---<div id="loader"></div>--->
 
   <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">
@@ -721,9 +725,22 @@
 										<label class="fw-700 fs-16 form-label">Category</label>
 										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type" onchange="findcategory(this.value)">
 											<option value="main_category">Main Category</option>
+											<?php 
+                                                 $sql="select * from main_category";
+												 $result=$db->con->query($sql);
+												 $count=$result->num_rows;
+												 if($count>0){
+													 ?>
 											<option value="sub_category">Sub Category</option>
+											<?php 
+                                                 $sql="select * from sub_category";
+												 $result=$db->con->query($sql);
+												 $count=$result->num_rows;
+												 if($count>0){
+													 ?>
 											<option value="sub_sub_category">Sub Sub-Category</option>
-					
+											<?php } ?>
+											<?php } ?>
 										</select>
 									</div>
 								</div>
@@ -737,11 +754,16 @@
 							<div class="row">
 								<div class="col-md-6" id="main_category">
 									<div class="form-group">
-										<label class="fw-700 fs-16 form-label">Main Category</label>
-										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type">
-											<option value="men">Men</option>
-											<option value="women">Women</option>
-											<option value="child">Child</option>
+										<label class="fw-700 fs-16 form-label">Under Main Category</label>
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category">
+											<?php  
+								      		$sql="select * from main_category";
+											$result=$db->con->query($sql);
+											while($data=$result->fetch_assoc()){
+												$main_category=$data['category_name'];
+											?>
+											<option value="men"><?php echo $main_category ; ?></option>
+											<?php } ?>
 					
 										</select>
 									</div>
@@ -749,11 +771,16 @@
 								<!--/span-->
 								<div class="col-md-6" id="sub_category">
 									<div class="form-group">
-										<label class="fw-700 fs-16 form-label">Sub Category</label>
-										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="category_type">
-											<option value="shoes">shoes</option>
-											<option value="clothing">clothing</option>
-											<option value="Accessories">Accessories</option>
+										<label class="fw-700 fs-16 form-label">Under Sub Category</label>
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="sub_category">
+										<?php  
+								      		$sql="select * from sub_category";
+											$result=$db->con->query($sql);
+											while($data=$result->fetch_assoc()){
+												$main_category=$data['sub_categoryname'];
+											?>
+											<option value="men"><?php echo $main_category ; ?></option>
+											<?php } ?>
 					
 										</select>
 									</div>

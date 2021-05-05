@@ -25,11 +25,11 @@ class Database{
 }
 /*
 $db=new Database();
-$sql="select * from admin";
+$sql="select * from main_category";
 
-$result=$db->AllSql($sql);
+$result=$db->con->query($sql);
 while($data=$result->fetch_assoc()){
-    echo $data['admin_name'];
+    echo $data['category_name'];
 }
 */
 
