@@ -715,7 +715,7 @@ $db=new Database();
 			  <div class="col-12">
 				<div class="box">
 				  <div class="box-body">
-					<form action="#">
+					<form action="add_new_menu_insert.php" method="POST" enctype="multipart/form-data">
 						<div class="form-body">
 							<div class="row">
 								<div class="col-md-6">
@@ -855,12 +855,12 @@ $db=new Database();
 								<div class="col-md-3">
 									<h4 class="box-title mt-20">Upload Image</h4>
 									<div class="product-img text-start">
-										<!----
-										<img src="../images/product/product-9.png" alt="" class="mb-15">
-										<p>Upload Anonther Image</p>
-										----->
+									
+										<img id="imgshow" alt="" class="mb-15">
+									
+									
 										<div class="btn btn-info mb-20">
-                                            <input type="file" class="upload"> 
+                                            <input type="file" class="upload" name="product_image" onchange="document.getElementById('imgshow').src = window.URL.createObjectURL(this.files[0])"> 
 										</div>
 									
 									</div>
@@ -887,7 +887,7 @@ $db=new Database();
 															<input type="text" class="form-control" placeholder="Second Price" name="product_second_price"> </div>
 													</td>
 													<td class="ps-0">
-														<input type="text" class="form-control" placeholder="product Delear" name="prduct_delear">
+														<input type="text" class="form-control" placeholder="product brand" name="prduct_brand">
 													</td>
 												</tr>
 											

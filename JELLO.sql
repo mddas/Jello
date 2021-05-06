@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2021 at 11:15 AM
+-- Generation Time: May 06, 2021 at 01:58 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -119,8 +119,26 @@ CREATE TABLE `product_detail` (
   `product_category` varchar(55) NOT NULL,
   `product_sub_category` varchar(55) NOT NULL,
   `product_sub_sub_category` varchar(55) DEFAULT NULL,
-  `product_status` varchar(20) NOT NULL
+  `product_status` varchar(20) NOT NULL,
+  `product_price` int(11) DEFAULT NULL,
+  `product_discount` int(11) DEFAULT NULL,
+  `product_description` text DEFAULT NULL,
+  `product_brand` varchar(55) DEFAULT NULL,
+  `meta_title` varchar(55) DEFAULT NULL,
+  `meta_keyword` varchar(55) DEFAULT NULL,
+  `product_image` varchar(44) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_detail`
+--
+
+INSERT INTO `product_detail` (`product_id`, `product_name`, `product_title`, `product_category`, `product_sub_category`, `product_sub_sub_category`, `product_status`, `product_price`, `product_discount`, `product_description`, `product_brand`, `meta_title`, `meta_keyword`, `product_image`) VALUES
+(18, 'Ayon', 'a cute boy', 'men', 'men', 'men', 'option1', 0, 0, 'Product Description', '', '', '', 'admin/jello/productimages/18.jpg'),
+(19, 'Big Ayon', 'a cute boy', 'men', 'men', 'men', 'option1', 0, 0, 'Product Description', '', '', '', 'admin/jello/productimages/19.png'),
+(20, 'Md', 'a cute boy', 'men', 'men', 'men', 'option1', 0, 0, 'Product Description', '', '', '', 'admin/jello/productimages/20.jpg'),
+(21, 'Md', 'a cute boy', 'men', 'men', 'men', 'option1', 0, 0, 'Product Description', '', '', '', 'admin/jello/productimages/21.jpg'),
+(22, 'Md', 'a cute boy', 'men', 'men', 'men', 'option1', 0, 0, 'Product Description', '', '', '', 'admin/jello/productimages/22.jpg');
 
 -- --------------------------------------------------------
 
@@ -140,6 +158,7 @@ CREATE TABLE `product_price` (
 --
 
 CREATE TABLE `size` (
+  `size_id` int(44) NOT NULL,
   `product_id` int(50) NOT NULL,
   `product_size` int(20) NOT NULL,
   `price` int(20) NOT NULL
@@ -156,7 +175,7 @@ CREATE TABLE `sub_category` (
   `which_main_category` varchar(30) NOT NULL,
   `sub_categoryname` varchar(55) NOT NULL,
   `sub_categorydescription` varchar(1000) DEFAULT NULL,
-  `sub_catogeryimage` varchar(55) DEFAULT NULL
+  `sub_catogeryimage` varchar(44) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -164,8 +183,11 @@ CREATE TABLE `sub_category` (
 --
 
 INSERT INTO `sub_category` (`sub_categoryid`, `which_main_category`, `sub_categoryname`, `sub_categorydescription`, `sub_catogeryimage`) VALUES
-(6, 'men', 'shoes', 'Description of Category', 'image'),
-(7, 'men', 'clothing', 'Description of Category', 'image');
+(6, 'men', 'shoes', 'Description of Category', ''),
+(7, 'men', 'clothing', 'Description of Category', ''),
+(8, 'men', 'BAG', 'Description of Category', ''),
+(9, 'women', 'Beauti-parler', 'Description of Category', 'image'),
+(10, 'women', 'Lady-cycle', 'Description of Category', 'image');
 
 -- --------------------------------------------------------
 
@@ -187,7 +209,12 @@ CREATE TABLE `sub_sub_category` (
 --
 
 INSERT INTO `sub_sub_category` (`sub_sub_id`, `which_main_category`, `which_sub_category`, `sub_sub_name`, `sub_sub_description`, `sub_sub_image`) VALUES
-(4, 'men', 'men', 'gaming shoes', 'Description of Category', 'image');
+(6, 'men', 'shoes', 'runnning shoes', 'Description of Category', 'image'),
+(7, 'men', 'clothing', 'Vest', 'Description of Category', 'image'),
+(8, 'women', 'BAG', 'hand bag', 'Description of Category', 'image'),
+(9, 'women', 'Beauti-parler', 'power', 'Description of Category', 'image'),
+(10, 'women', 'shoes', 'lady shoes', 'Description of Category', 'image'),
+(11, 'women', 'Lady-cycle', 'chrger cycle', 'Description of Category', 'image');
 
 --
 -- Indexes for dumped tables
@@ -227,8 +254,8 @@ ALTER TABLE `product_price`
 -- Indexes for table `size`
 --
 ALTER TABLE `size`
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD UNIQUE KEY `product_id_2` (`product_id`);
+  ADD PRIMARY KEY (`size_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `sub_category`
@@ -268,19 +295,25 @@ ALTER TABLE `main_category`
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `product_id` int(55) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `size`
+--
+ALTER TABLE `size`
+  MODIFY `size_id` int(44) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_category`
 --
 ALTER TABLE `sub_sub_category`
-  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

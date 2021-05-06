@@ -25,10 +25,9 @@ $db=new Database();
 
 </head>
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
-	
 <div class="wrapper">
-	<!---<div id="loader"></div>--->
-
+	<div id="loader"></div>
+<div id="lol"></div>
   <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">
 		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
@@ -755,14 +754,14 @@ $db=new Database();
 								<div class="col-md-6" id="main_category">
 									<div class="form-group">
 										<label class="fw-700 fs-16 form-label">Under Main Category</label>
-										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category">
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category" onchange="sendToajax(this.value)">
 											<?php  
 								      		$sql="select * from main_category";
 											$result=$db->con->query($sql);
 											while($data=$result->fetch_assoc()){
 												$main_category=$data['category_name'];
 											?>
-											<option value="men"><?php echo $main_category ; ?></option>
+											<option value="<?php echo $main_category ; ?>"><?php echo $main_category ; ?></option>
 											<?php } ?>
 					
 										</select>
@@ -772,16 +771,8 @@ $db=new Database();
 								<div class="col-md-6" id="sub_category">
 									<div class="form-group">
 										<label class="fw-700 fs-16 form-label">Under Sub Category</label>
-										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="sub_category">
-										<?php  
-								      		$sql="select * from sub_category";
-											$result=$db->con->query($sql);
-											while($data=$result->fetch_assoc()){
-												$main_category=$data['sub_categoryname'];
-											?>
-											<option value="men"><?php echo $main_category ; ?></option>
-											<?php } ?>
-					
+										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="sub_category" id="sub-sub">
+										
 										</select>
 									</div>
 								</div>

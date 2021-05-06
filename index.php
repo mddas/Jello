@@ -1,3 +1,7 @@
+<?php include("admin/jello/Database_control.php");?>
+<?php
+$db=new Database();
+?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
 <!--[if IE 8]><html class="ie ie8"><![endif]-->
@@ -83,7 +87,16 @@
                           <li class="menu-item"><a href="#">Homepage #3</a></li>
                         </ul>
                   </li>
-                  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Men</a>
+                  <?php 
+                 
+                  $sql="select * from main_category";
+                  $main_result=$db->con->query($sql);
+                  while($main_data=$main_result->fetch_assoc())
+                  {
+                    $main_category=$main_data['category_name'];
+                  
+                   ?>
+                  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#"><?php echo $main_category; ?></a>
                     <div class="mega-menu">
                       <div class="mega-wrap">
                         <div class="mega-column">
@@ -97,42 +110,36 @@
                             <li><a href="product-listing.html">FAN GEAR</a></li>
                           </ul>
                         </div>
+                        <?php 
+                 
+                 $sub_sql="select * from sub_category";
+                 $sub_result=$db->con->query($sub_sql);
+                while($sub_data=$sub_result->fetch_assoc())
+                  {
+                       $which_main_category=$sub_data['which_main_category'];
+                       if($which_main_category==$main_category){
+                       $sub_category=$sub_data['sub_categoryname'];
+                       ?>
                         <div class="mega-column">
-                          <h4 class="mega-heading">Shoes</h4>
+                          <h4 class="mega-heading"><?php echo $sub_category; ?></h4>
                           <ul class="mega-item">
-                            <li><a href="product-listing.html">All Shoes</a></li>
-                            <li><a href="product-listing.html">Running</a></li>
-                            <li><a href="product-listing.html">Training & Gym</a></li>
-                            <li><a href="product-listing.html">Basketball</a></li>
-                            <li><a href="product-listing.html">Football</a></li>
-                            <li><a href="product-listing.html">Soccer</a></li>
-                            <li><a href="product-listing.html">Baseball</a></li>
+                               <?php
+                          $sub_sub_sql="SELECT * FROM `sub_sub_category`;";
+                 $sub_sub_result=$db->con->query($sub_sub_sql);
+                while($sub_sub_data=$sub_sub_result->fetch_assoc())
+                  {
+                        
+                        $in_sub_sub_which_sub_category=$sub_sub_data['which_sub_category'];
+                       if($in_sub_sub_which_sub_category==$sub_category){
+                       $sub_sub_category=$sub_sub_data['sub_sub_name'];
+                       ?>
+                            <li><a href="product-listing.html"><?php echo $sub_sub_category;?></a></li>
+                         
+                            <?php }} ?>
                           </ul>
                         </div>
-                        <div class="mega-column">
-                          <h4 class="mega-heading">CLOTHING</h4>
-                          <ul class="mega-item">
-                            <li><a href="product-listing.html">Compression & Nike Pro</a></li>
-                            <li><a href="product-listing.html">Tops & T-Shirts</a></li>
-                            <li><a href="product-listing.html">Polos</a></li>
-                            <li><a href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                            <li><a href="product-listing.html">Jackets & Vests</a></li>
-                            <li><a href="product-listing.html">Pants & Tights</a></li>
-                            <li><a href="product-listing.html">Shorts</a></li>
-                          </ul>
-                        </div>
-                        <div class="mega-column">
-                          <h4 class="mega-heading">Accessories</h4>
-                          <ul class="mega-item">
-                            <li><a href="product-listing.html">Compression & Nike Pro</a></li>
-                            <li><a href="product-listing.html">Tops & T-Shirts</a></li>
-                            <li><a href="product-listing.html">Polos</a></li>
-                            <li><a href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                            <li><a href="product-listing.html">Jackets & Vests</a></li>
-                            <li><a href="product-listing.html">Pants & Tights</a></li>
-                            <li><a href="product-listing.html">Shorts</a></li>
-                          </ul>
-                        </div>
+                        <?php }} ?>
+            
                         <div class="mega-column">
                           <h4 class="mega-heading">BRAND</h4>
                           <ul class="mega-item">
@@ -145,8 +152,9 @@
                       </div>
                     </div>
                   </li>
-                  <li class="menu-item"><a href="#">Women</a></li>
-                  <li class="menu-item"><a href="#">Kids</a></li>
+                  <?php } ?>
+                 
+                 <!---- <li class="menu-item"><a href="#">Kids</a></li>
                   <li class="menu-item menu-item-has-children dropdown"><a href="#">News</a>
                         <ul class="sub-menu">
                           <li class="menu-item menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
@@ -158,6 +166,7 @@
                           <li class="menu-item"><a href="blog-list.html">Blog List</a></li>
                         </ul>
                   </li>
+                  ----->
                   <li class="menu-item menu-item-has-children dropdown"><a href="#">Contact</a>
                         <ul class="sub-menu">
                           <li class="menu-item"><a href="contact-us.html">Contact Us #1</a></li>
@@ -258,16 +267,34 @@
             <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
               <div class="ps-masonry">
                 <div class="grid-sizer"></div>
+                <!-----here is all product list----->
+<?php 
+         $sql="select * from product_detail";
+         $result=$db->con->query($sql);
+         while($data=$result->fetch_assoc()){
+           $product_image=$data['product_image'];
+           $product_name=$data['product_name'];
+           ?>
+
+
+
+
                 <div class="grid-item kids">
                   <div class="grid-item__content-wrapper">
                     <div class="ps-shoe mb-30">
                       <div class="ps-shoe__thumbnail">
-                        <div class="ps-badge"><span>New</span></div>
-                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+                        <div class="ps-badge">
+                          <span>New</span></div>
+                        <div class="ps-badge ps-badge--sale ps-badge--2nd">
+                          <span>-35%</span>
+                        </div>
+                        <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
+                        <img src="<?php echo $product_image;?>" alt="" style='height:300px;'>
+                        <a class="ps-shoe__overlay" href="product-detail.html"></a>
                       </div>
                       <div class="ps-shoe__content">
                         <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
+                          <div class="ps-shoe__variant normal"><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
                           <select class="ps-rating ps-shoe__rating">
                             <option value="1">1</option>
                             <option value="1">2</option>
@@ -276,7 +303,7 @@
                             <option value="2">5</option>
                           </select>
                         </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
+                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#"><?php echo $product_name; ?></a>
                           <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
                             <del>£220</del> £ 120</span>
                         </div>
@@ -284,169 +311,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="grid-item nike">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item adidas">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item kids">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail">
-                        <div class="ps-badge ps-badge--sale"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
-                            <del>£220</del> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item men">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item women">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item kids">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/7.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="grid-item kids">
-                  <div class="grid-item__content-wrapper">
-                    <div class="ps-shoe mb-30">
-                      <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/8.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
-                      </div>
-                      <div class="ps-shoe__content">
-                        <div class="ps-shoe__variants">
-                          <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                          <select class="ps-rating ps-shoe__rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                          </select>
-                        </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">Air Jordan 7 Retro</a>
-                          <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <?php } ?>
+                <!-----product list closed-->
+       
+                <!---featured product closed--->
               </div>
             </div>
           </div>
