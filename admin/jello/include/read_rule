@@ -1,0 +1,18 @@
+<body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
+<div class="wrapper">
+
+
+include(navbar.html)
+include(left_navbar.html)
+include(index_middle_content.html)
+include(right_navbar.html)
+include(footer.html)
+include(notification_right_side_control_model.html)
+
+
+</di>//wrapper clossed
+
+include(chat_popup_box.html)
+include(javascript)
+
+</div
