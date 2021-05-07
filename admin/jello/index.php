@@ -1,15 +1,11 @@
-<?php
-include("class/Database_control.php");
-$db=new Database();
-?>
-<?php include("include/header.html"); ?>
+﻿<?php include("include/header.html"); ?>
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
 <div class="wrapper">
 
 <?php 
 include("include/navbar.html");
 include("include/left_navbar.html");
-include("include/add_category.php");
+include("include/index_middle_content.html");///this is middle part of page i.e content wrapper
 include("include/right_navbar.html");
 include("include/footer.html");
 include("include/control_sidebar.html");

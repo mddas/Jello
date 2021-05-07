@@ -30,7 +30,7 @@ function sendToajax(value){
  
     $.ajax({  
         type: "POST",  
-        url: "sub_sub_add_category_ajax.php", 
+        url: "class/sub_sub_add_category_ajax.php", 
         data: "under_which_main_category="+ value,
         success:function (data) {
                           
