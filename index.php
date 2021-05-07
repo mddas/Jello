@@ -1,14 +1,14 @@
-<?php include("include/html_header0.html"); ?>
+<?php include("include/html_header0.php"); ?>
 <body class="ps-loadings">
 
 <?php
-include("include/navbar1.html");
+include("include/navbar1.php");
 include("include/notification2.html");
 ?>
 <main class="ps-main">
     <?php
        include("include/crousel3.html");
-       include("include/futured_product4.html");
+       include("include/futured_product4.php");
        include("include/crousel5.html");
        include("include/unknown6.html");
        include("include/top_sells7.html");

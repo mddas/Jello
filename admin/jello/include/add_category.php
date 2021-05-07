@@ -1,3 +1,38 @@
+<?php 
+ include("class/add_category_insert.php");
+
+ $db=new Database();
+ $send=new AddCategory();
+ 
+  ?>
+ 
+<?php
+
+  if(isset($_POST['add'])){
+    //$category_name=htmlspecialchars($_POST['category_name'], ENT_QUOTES);
+    $category_type=$_POST['category_type'];
+    $category_name=$_POST['category_name'];
+    $category_status=$_POST['category_status'];
+    $category_description=$_POST['category_description'];
+    $category_metatitle=$_POST['matatitle'];
+    $category_metakeyword=$_POST['metakeyword'];
+	$which_maincategory="";
+	$which_subcategory="";
+    if(isset($_POST['main_category'])){
+       $which_maincategory=$_POST['main_category'];
+      
+    }
+    if(isset($_POST['sub_category'])){
+        $which_subcategory=$_POST['sub_category'];
+   
+    }
+	$send->FormInsert($category_type,$category_name,$category_status,$category_description,$category_metatitle,$category_metakeyword,$which_maincategory,$which_subcategory);
+
+}
+
+
+?>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
@@ -27,7 +62,7 @@
 			  <div class="col-12">
 				<div class="box">
 				  <div class="box-body">
-					<form action="add_category_insert.php" method="POST">
+					<form action="" method="POST">
 						<div class="form-body">
 							<!--/row-->
 							<div class="row">

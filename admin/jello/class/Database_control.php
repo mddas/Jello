@@ -1,7 +1,5 @@
 <?php
-
 class Database{
-
     public $localhost="localhost";
     public $username = "root";
     public $password = "";
@@ -17,9 +15,18 @@ class Database{
        $this->con=new mysqli($this->localhost,$this->username,$this->password,$this->databasename);
     }
 
-    public function AllSql($sql){
+    public function SELECT($sql){
        return $this->con->query($sql);
-    }   
+    }  
+    public function INSERT($sql){
+        return $this->con->query($sql);
+     }   
+     public function UPDATE($sql){
+        return $this->con->query($sql);
+     }   
+     public function AllSql($sql){
+        return $this->con->query($sql);
+     }    
     
 
 }

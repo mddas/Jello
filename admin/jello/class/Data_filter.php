@@ -1,21 +1,14 @@
 <?php
 
-class filter{
-
-    public $data;
-
-    public function __construct(){
-        //$this->secure_data($data);
-    }
+class FilterData{
 
     public function secure_data($data){
 
-         return htmlspecialchars($data, ENT_QUOTES);
+        $data=trim($data);
+        $data=stripcslashes($data);
+        $data=htmlspecialchars($data);
+        return $data;
     }
-
-
-
-
 }
 
 

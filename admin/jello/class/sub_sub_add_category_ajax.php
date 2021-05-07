@@ -8,6 +8,7 @@ $result=$db->con->query($sql);
 while($data=$result->fetch_assoc()){
 $sub_category=$data['sub_categoryname'];
 echo '<option value="'.$sub_category.'"'.'>'.$sub_category.'</option>';
+
 										
 }
 ?>

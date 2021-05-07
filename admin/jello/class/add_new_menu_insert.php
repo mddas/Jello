@@ -1,5 +1,5 @@
 <?php
-include("Database_control.php");
+//include("Database_control.php");
 include("image_upload.php");
 $db=new Database();
 $image=new imageToUpload();

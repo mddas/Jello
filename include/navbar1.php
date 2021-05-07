@@ -41,7 +41,16 @@
                       <li class="menu-item"><a href="#">Homepage #3</a></li>
                     </ul>
               </li>
-              <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Men</a>
+              <?php 
+                 
+              $sql="select * from main_category";
+              $main_result=$db->con->query($sql);
+              while($main_data=$main_result->fetch_assoc())
+              {
+                $main_category=$main_data['category_name'];
+              
+               ?>
+              <li class="menu-item menu-item-has-children has-mega-menu"><a href="#"><?php echo $main_category; ?></a>
                 <div class="mega-menu">
                   <div class="mega-wrap">
                     <div class="mega-column">
@@ -55,42 +64,36 @@
                         <li><a href="product-listing.html">FAN GEAR</a></li>
                       </ul>
                     </div>
+                    <?php 
+             
+             $sub_sql="select * from sub_category";
+             $sub_result=$db->con->query($sub_sql);
+            while($sub_data=$sub_result->fetch_assoc())
+              {
+                   $which_main_category=$sub_data['which_main_category'];
+                   if($which_main_category==$main_category){
+                   $sub_category=$sub_data['sub_categoryname'];
+                   ?>
                     <div class="mega-column">
-                      <h4 class="mega-heading">Shoes</h4>
+                      <h4 class="mega-heading"><?php echo $sub_category; ?></h4>
                       <ul class="mega-item">
-                        <li><a href="product-listing.html">All Shoes</a></li>
-                        <li><a href="product-listing.html">Running</a></li>
-                        <li><a href="product-listing.html">Training & Gym</a></li>
-                        <li><a href="product-listing.html">Basketball</a></li>
-                        <li><a href="product-listing.html">Football</a></li>
-                        <li><a href="product-listing.html">Soccer</a></li>
-                        <li><a href="product-listing.html">Baseball</a></li>
+                           <?php
+                      $sub_sub_sql="SELECT * FROM `sub_sub_category`;";
+             $sub_sub_result=$db->con->query($sub_sub_sql);
+            while($sub_sub_data=$sub_sub_result->fetch_assoc())
+              {
+                    
+                    $in_sub_sub_which_sub_category=$sub_sub_data['which_sub_category'];
+                   if($in_sub_sub_which_sub_category==$sub_category){
+                   $sub_sub_category=$sub_sub_data['sub_sub_name'];
+                   ?>
+                        <li><a href="product-listing.html"><?php echo $sub_sub_category;?></a></li>
+                     
+                        <?php }} ?>
                       </ul>
                     </div>
-                    <div class="mega-column">
-                      <h4 class="mega-heading">CLOTHING</h4>
-                      <ul class="mega-item">
-                        <li><a href="product-listing.html">Compression & Nike Pro</a></li>
-                        <li><a href="product-listing.html">Tops & T-Shirts</a></li>
-                        <li><a href="product-listing.html">Polos</a></li>
-                        <li><a href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                        <li><a href="product-listing.html">Jackets & Vests</a></li>
-                        <li><a href="product-listing.html">Pants & Tights</a></li>
-                        <li><a href="product-listing.html">Shorts</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-column">
-                      <h4 class="mega-heading">Accessories</h4>
-                      <ul class="mega-item">
-                        <li><a href="product-listing.html">Compression & Nike Pro</a></li>
-                        <li><a href="product-listing.html">Tops & T-Shirts</a></li>
-                        <li><a href="product-listing.html">Polos</a></li>
-                        <li><a href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                        <li><a href="product-listing.html">Jackets & Vests</a></li>
-                        <li><a href="product-listing.html">Pants & Tights</a></li>
-                        <li><a href="product-listing.html">Shorts</a></li>
-                      </ul>
-                    </div>
+                    <?php }} ?>
+        
                     <div class="mega-column">
                       <h4 class="mega-heading">BRAND</h4>
                       <ul class="mega-item">
@@ -103,8 +106,8 @@
                   </div>
                 </div>
               </li>
-              <li class="menu-item"><a href="#">Women</a></li>
-              <li class="menu-item"><a href="#">Kids</a></li>
+              <?php } ?>
+            
               <li class="menu-item menu-item-has-children dropdown"><a href="#">News</a>
                     <ul class="sub-menu">
                       <li class="menu-item menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>

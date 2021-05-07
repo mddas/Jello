@@ -1,32 +1,33 @@
 <?php
-include("Database_control.php");
-$db=new Database();
+include("class/Data_filter.php");
+include("class/Database_control.php");
 
-//include("Data_filter.php");
-
-if(isset($_POST['add'])){
-    //$category_name=htmlspecialchars($_POST['category_name'], ENT_QUOTES);
-    $category_type=$_POST['category_type'];
-    $category_name=$_POST['category_name'];
-    $category_status=$_POST['category_status'];
-    $category_description=$_POST['category_description'];
-    $category_metatitle=$_POST['matatitle'];
-    $category_metakeyword=$_POST['metakeyword'];
-    $category_image="image";
-    if(isset($_POST['main_category'])){
-       $which_maincategory=$_POST['main_category'];
-      
+class AddCategory{
+       public $db;
+    ///public $filter;
+    public function __construct()
+    {
+        $this->db=new Database();
+       //$this->filter=new FilterData();
     }
-    if(isset($_POST['sub_category'])){
-        $which_subcategory=$_POST['sub_category'];
-   
-    }
-}
-
+    public function FormInsert($category_type,$category_name,$category_status,$category_description,$category_metatitle,$category_metakeyword,$which_maincategory,$which_subcategory)
+    {  
+        $filter=new FilterData();
+        $categorys_type=$filter->secure_data($category_type);
+        $category_name=$filter->secure_data($category_name);
+        $category_status=$filter->secure_data($category_status);
+        $category_description=$filter->secure_data($category_description);
+        $category_metatitle=$filter->secure_data($category_metatitle);
+        $category_metakeyword=$filter->secure_data($category_metakeyword);
+        $which_maincategory=$filter->secure_data($which_maincategory);
+        $which_subcategory=$filter->secure_data($which_subcategory);
+        $category_image="imagenull";
+       
+     
 if($category_type=="main_category"){
 //insert in main_category table
 echo "main_category inserted<br>";
-$sql_prepared = $db->con->prepare("INSERT INTO main_category (category_name, category_description, category_image) VALUES (?, ?, ?)");
+$sql_prepared = $this->db->con->prepare("INSERT INTO main_category (category_name, category_description, category_image) VALUES (?, ?, ?)");
 $sql_prepared->bind_param("sss", $category_name, $category_description, $category_image);
 $sql_prepared->execute();
 
@@ -50,13 +51,8 @@ else
    echo "not any category match";
 }
 
+    }
 
-/*
-$sql="select * from admin";
-$result=$db->con->query($sql);
-$data=$result->fetch_assoc();
-echo $data['admin_name'];
-//$db=new Database();
-*/
+}//AddCategory class closed
 
 ?>

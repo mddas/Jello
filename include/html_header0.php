@@ -1,3 +1,7 @@
+<?php
+include("admin/jello/class/Database_control.php");
+$db=new Database();
+?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
 <!--[if IE 8]><html class="ie ie8"><![endif]-->

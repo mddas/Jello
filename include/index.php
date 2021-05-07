@@ -1,5 +1,5 @@
-<?php include("admin/jello/class/Database_control.php");?>
 <?php
+include("admin/jello/class/Database_control.php");
 $db=new Database();
 ?>
 <!DOCTYPE html>

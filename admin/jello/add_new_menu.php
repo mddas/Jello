@@ -1,5 +1,5 @@
 <?php
-include("class/Database_control.php");
+//include("class/Database_control.php");
 $db=new Database();
 ?>
 <?php include("include/header.html"); ?>
