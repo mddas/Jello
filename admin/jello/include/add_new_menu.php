@@ -13,7 +13,13 @@ if(isset($_POST['submit'])){
     $main_category=$_POST['main_category'];
     $sub_category=$_POST['sub_category'];
     $sub_sub_categoryname=$_POST['sub_sub_name'];
+
+	if(isset($_POST['status'])){
     $status=$_POST['status'];
+	}
+	else{
+		$status="published";
+	}
     $product_price=$_POST['product_price'];
     $product_discount=$_POST['product_discount'];
     $product_description=$_POST['product_description'];
@@ -28,12 +34,67 @@ if(isset($_POST['submit'])){
     $result=$db->SELECT($sql);
     $data = $result->fetch_assoc();
     $product_id = $data['Auto_increment'];
-    $image_name="productimages/".$product_id;
-    $product_image=$image->imgupload($image_name);
-    $product_image="admin/jello/".$product_image;
-    
-	$SendData->ReceiveData($product_name,$product_title,$main_category,$sub_category,$sub_sub_categoryname,$status,$product_price,$product_discount,$product_description,$meta_title,$meta_keyword,$product_color,$product_size,$product_second_price,$prduct_brand,$product_image);
-             
+	$which_image="p";
+	$product_image1="";
+	$product_image2="";
+	$product_image3="";
+	$product_image4="";
+    //print_r($_FILES);
+//in imgupload 2 argument one is image name with image location and second argument is image post name
+	if(!empty($_FILES['product_image1']['name'])){
+	$image_name="productimages/".$product_id."a";
+    $product_image=$image->imgupload($image_name,"product_image1");
+    $product_image1="admin/jello/".$product_image;
+	$which_image="a";
+
+	}
+	if(!empty($_FILES['product_image2']['name'])){
+	$image_name="productimages/".$product_id."b";
+    $product_image=$image->imgupload($image_name,"product_image2");
+    $product_image2="admin/jello/".$product_image;
+	$which_image="b";
+	}
+	if(!empty($_FILES['product_image3']['name'])){
+	$image_name="productimages/".$product_id."c";
+	$product_image=$image->imgupload($image_name,"product_image3");
+	$product_image3="admin/jello/".$product_image;
+	$which_image="c";
+	}
+	if(!empty($_FILES['product_image4']['name'])){
+	$image_name="productimages/".$product_id."d";
+	$product_image=$image->imgupload($image_name,"product_image4");
+	$product_image4="admin/jello/".$product_image;
+	$which_image="d";
+	}
+    if($which_image!="p"){
+	
+        $output=$SendData->ReceiveData($product_name,$product_title,$main_category,$sub_category,$sub_sub_categoryname,$status,$product_price,$product_discount,$product_description,$meta_title,$meta_keyword,$product_color,$product_size,$product_second_price,$prduct_brand);
+		
+	}
+   
+    if($which_image=="p"){
+		
+		echo "<script>alert('Please select at least one image');</script>";
+	}
+	else if($which_image=="a" && $output!=false)
+	{   
+		
+		$sql="INSERT INTO images (product_id,image_a) VALUES ('$product_id','$product_image1');";
+		$db->INSERT($sql);
+		
+	}
+	else if($which_image=="b" && $output!=false){
+        $sql="INSERT INTO images (product_id,image_a,image_b) VALUES ('$product_id','$product_image1','$product_image2');";
+		$db->INSERT($sql);
+	}
+	else if($which_image=="c" && $output!=false){
+         $sql="INSERT INTO images (product_id,image_a,image_b,image_c) VALUES ('$product_id','$product_image1','$product_image2','$product_image3');";
+		 $db->INSERT($sql);
+	}
+	else if($which_image=="d" && $output!=false){
+		$sql="INSERT INTO images (product_id,image_a,image_b,image_c,image_d) VALUES ('$product_id','$product_image1','$product_image2','$product_image3','$product_image4');";
+		$db->INSERT($sql);
+	}
 }
 
 
@@ -172,7 +233,7 @@ if(isset($_POST['submit'])){
 										<label class="fw-700 fs-16 form-label">Price</label>
 										<div class="input-group">
 											<div class="input-group-addon"><i class="ti-money"></i></div>
-											<input type="text" class="form-control" placeholder="270" name="product_price"> </div>
+											<input type="number" class="form-control" placeholder="270" name="product_price"> </div>
 									</div>
 								</div>
 								<!--/span-->
@@ -181,7 +242,7 @@ if(isset($_POST['submit'])){
 										<label class="fw-700 fs-16 form-label">Discount</label>
 										<div class="input-group">
 											<div class="input-group-addon"><i class="ti-cut"></i></div>
-											<input type="text" class="form-control" placeholder="50%" name="product_discount"> </div>
+											<input type="number" value=0 class="form-control" placeholder="50%" name="product_discount"> </div>
 									</div>
 								</div>
 								<!--/span-->
@@ -208,19 +269,64 @@ if(isset($_POST['submit'])){
 										<input type="text" class="form-control" name="meta_keyword"> </div>
 								</div>
 								<!--/span-->
+								<!----image upload---->
 								<div class="col-md-3">
 									<h4 class="box-title mt-20">Upload Image</h4>
 									<div class="product-img text-start">
 									
-										<img id="imgshow" alt="" class="mb-15">
+										<img id="imgshow1" alt="" class="mb-15" style="height:110px;width:120px;">
 									
 									
 										<div class="btn btn-info mb-20">
-                                            <input type="file" class="upload" name="product_image" onchange="document.getElementById('imgshow').src = window.URL.createObjectURL(this.files[0])"> 
+                                            <input type="file" class="upload" name="product_image1" style="width:100px" onchange="document.getElementById('imgshow1').src = window.URL.createObjectURL(this.files[0])"> 
 										</div>
 									
 									</div>
 								</div>
+								<!--/span-->
+								<div class="col-md-3">
+									<h4 class="box-title mt-20">Upload Image</h4>
+									<div class="product-img text-start">
+									
+										<img id="imgshow2" alt="" class="mb-15" style="height:110px;width:120px;">
+									
+									
+										<div class="btn btn-info mb-20">
+                                            <input type="file" class="upload" name="product_image2" style="width:100px" onchange="document.getElementById('imgshow2').src = window.URL.createObjectURL(this.files[0])"> 
+										</div>
+									
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-3">
+									<h4 class="box-title mt-20">Upload Image</h4>
+									<div class="product-img text-start">
+									
+										<img id="imgshow3" alt="" class="mb-15" style="height:110px;width:120px;">
+									
+									
+										<div class="btn btn-info mb-20">
+                                            <input type="file" class="upload" name="product_image3" style="width:100px" onchange="document.getElementById('imgshow3').src = window.URL.createObjectURL(this.files[0])"> 
+										</div>
+									
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-3">
+									<h4 class="box-title mt-20">Upload Image</h4>
+									<div class="product-img text-start">
+									
+										<img id="imgshow4" alt="" class="mb-15" style="height:110px;width:120px;">
+									
+									
+										<div class="btn btn-info mb-20">
+                                            <input type="file" class="upload" name="product_image4" style="width:100px" onchange="document.getElementById('imgshow4').src = window.URL.createObjectURL(this.files[0])"> 
+										</div>
+									
+									</div>
+								</div>
+								<!----image upload closed---->
+
 							</div>
 							<div class="row no-gutters">
 								<div class="col-md-12">

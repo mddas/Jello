@@ -1,16 +1,17 @@
-<?php 
 
+<?php 
+//in imgupload 2 argument one is image name with image location and second argument is image post name
 class  imageToUpload{
    public $image_name;
-    public function imgupload($image_name){
-        if(isset($_FILES['product_image'])){
+    public function imgupload($image_name,$post_name){
+        if(isset($_FILES[$post_name])){
             
             $errors= array();
-            $file_name = $_FILES['product_image']['name'];
-            $file_size =$_FILES['product_image']['size'];
-            $file_tmp =$_FILES['product_image']['tmp_name'];
-            $file_type=$_FILES['product_image']['type'];
-            //$file_ext=strtolower(end(explode('.',$_FILES['product_image']['name'])));
+            $file_name = $_FILES[$post_name]['name'];
+            $file_size =$_FILES[$post_name]['size'];
+            $file_tmp =$_FILES[$post_name]['tmp_name'];
+            $file_type=$_FILES[$post_name]['type'];
+            //$file_ext=strtolower(end(explode('.',$_FILES[$post_name]['name'])));
             $file_ext=explode('.',$file_name);
             $file_ext=end($file_ext);
             $file_ext=strtolower($file_ext);
@@ -31,7 +32,7 @@ class  imageToUpload{
                move_uploaded_file($file_tmp,$target_loc);
                return $target_loc;      
             }else{
-               print_r($errors);
+               //print_r($errors);
             }
         }
        
