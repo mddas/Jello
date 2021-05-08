@@ -1,5 +1,5 @@
 <?php
-
+ include("class/Database_control.php"); 
 ?>
 <?php include("include/header.html"); ?>
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">

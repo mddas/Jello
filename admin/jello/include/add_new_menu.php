@@ -1,3 +1,48 @@
+<?php
+include("class/Database_control.php");
+include("class/add_new_menu_insert.php");
+$db=new Database();
+$SendData=new FormInsert();
+?>
+
+<?php
+if(isset($_POST['submit'])){
+    
+    $product_name=$_POST['product_name'];
+    $product_title=$_POST['product_title'];
+    $main_category=$_POST['main_category'];
+    $sub_category=$_POST['sub_category'];
+    $sub_sub_categoryname=$_POST['sub_sub_name'];
+    $status=$_POST['status'];
+    $product_price=$_POST['product_price'];
+    $product_discount=$_POST['product_discount'];
+    $product_description=$_POST['product_description'];
+    $meta_title=$_POST['meta_title'];
+    $meta_keyword=$_POST['meta_keyword'];
+    $product_color=$_POST['product_color'];
+    $product_size=$_POST['product_size'];
+    $product_second_price=$_POST['product_second_price'];
+    $prduct_brand=$_POST['prduct_brand'];
+    
+    $sql = "SHOW TABLE STATUS WHERE `Name` = 'product_detail'";
+    $result=$db->SELECT($sql);
+    $data = $result->fetch_assoc();
+    $product_id = $data['Auto_increment'];
+    $image_name="productimages/".$product_id;
+    $product_image=$image->imgupload($image_name);
+    $product_image="admin/jello/".$product_image;
+    
+	$SendData->ReceiveData($product_name,$product_title,$main_category,$sub_category,$sub_sub_categoryname,$status,$product_price,$product_discount,$product_description,$meta_title,$meta_keyword,$product_color,$product_size,$product_second_price,$prduct_brand,$product_image);
+             
+}
+
+
+
+?>
+
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
@@ -26,7 +71,7 @@
 			  <div class="col-12">
 				<div class="box">
 				  <div class="box-body">
-					<form action="add_new_menu_insert.php" method="POST" enctype="multipart/form-data">
+					<form action="" method="POST" enctype="multipart/form-data">
 						<div class="form-body">
 							<div class="row">
 								<div class="col-md-6">

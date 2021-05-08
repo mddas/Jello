@@ -1,7 +1,4 @@
-<?php
-//include("class/Database_control.php");
-$db=new Database();
-?>
+
 <?php include("include/header.html"); ?>
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
 <div class="wrapper">

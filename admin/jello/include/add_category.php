@@ -1,4 +1,5 @@
 <?php 
+
  include("class/add_category_insert.php");
 
  $db=new Database();
@@ -40,12 +41,11 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h4 class="page-title">Add/Edit Menu</h4>
+					<h4 id="empty" class="page-title">Add/Edit Menu</h4>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Menu</li>
+							
 								<li class="breadcrumb-item active" aria-current="page">Add/Edit</li>
 							</ol>
 						</nav>
@@ -80,7 +80,7 @@
 											<option value="sub_category">Sub Category</option>
 											<?php 
                                                  $sql="select * from sub_category";
-												 $result=$db->con->query($sql);
+												 $result=$db->SELECT($sql);
 												 $count=$result->num_rows;
 												 if($count>0){
 													 ?>
@@ -104,7 +104,7 @@
 										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category" onchange="sendToajax(this.value)">
 											<?php  
 								      		$sql="select * from main_category";
-											$result=$db->con->query($sql);
+											$result=$db->SELECT($sql);
 											while($data=$result->fetch_assoc()){
 												$main_category=$data['category_name'];
 											?>
@@ -119,7 +119,14 @@
 									<div class="form-group">
 										<label class="fw-700 fs-16 form-label">Under Sub Category</label>
 										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="sub_category" id="sub-sub">
-										
+										<?php  
+								      		$sql="select * from sub_category";
+											$result=$db->SELECT($sql);
+											while($data=$result->fetch_assoc()){
+												$main_category=$data['sub_categoryname'];
+											?>
+											<option value="<?php echo $main_category ; ?>"><?php echo $main_category ; ?></option>
+											<?php } ?>
 										</select>
 									</div>
 								</div>
@@ -130,7 +137,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									  <label class="fw-700 fs-16 form-label">Category Name</label>
-									  <input type="text" class="form-control" placeholder="Category Name" name="category_name">
+									  <input type="text" class="form-control" placeholder="Category Name" name="category_name" >
 									</div>
 								</div>
 									<!--/span-->

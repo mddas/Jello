@@ -16,30 +16,43 @@ class Database{
     }
 
     public function SELECT($sql){
-       return $this->con->query($sql);
+       $result=$this->con->query($sql) or die ($this->con->error.__line__);
+       return $result;
     }  
     public function INSERT($sql){
-        return $this->con->query($sql);
+       
+        $insert= $this->con->query($sql) or die ($this->con->error.__line__);
+        if($insert){
+         echo "<script>alert('Sucessfully inserted...')</script>";
+
+        }else{
+         echo "<script>alert(".$this->con->error.")</script>";
+           die("Error :(".$this->con->error.")".$this->con->error);
+        }
+
+
      }   
      public function UPDATE($sql){
-        return $this->con->query($sql);
+        return $this->con->query($sql) or die ($this->con->error.__line__);
      }   
-     public function AllSql($sql){
-        return $this->con->query($sql);
-     }    
+     
     
 
 }
 /*
 $db=new Database();
+$nam="'manoj,'";
+$name=$db->con->real_escape_string($nam);
+echo $name." secure ";
+
 $sql="select * from main_category";
 
 $result=$db->con->query($sql);
 while($data=$result->fetch_assoc()){
     echo $data['category_name'];
 }
+
+
 */
-
-
 
 ?>
