@@ -18,10 +18,13 @@
 
       <!-----here is all product list----->
       <?php 
-      $sql="select * from product_detail";
-      $result=$db->con->query($sql);
+      $sql="SELECT * from images INNER JOIN product_detail on images.product_id=product_detail.product_id;";
+      $result=$db->SELECT($sql);
       while($data=$result->fetch_assoc()){
-        $product_image=$data['product_image'];
+        $image_a=$data['image_a'];
+        $image_b=$data['image_b'];
+        $image_c=$data['image_c'];
+        $image_d=$data['image_d'];
         $product_name=$data['product_name'];
         ?>
 
@@ -38,12 +41,12 @@
                        <span>-35%</span>
                      </div>
                      <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
-                     <img src="<?php echo $product_image;?>" alt="" style='height:300px;'>
+                     <img src="<?php echo $image_a;?>" alt="" style='height:350px;'>
                      <a class="ps-shoe__overlay" href="product-detail.html"></a>
                    </div>
                    <div class="ps-shoe__content">
                      <div class="ps-shoe__variants">
-                       <div class="ps-shoe__variant normal"><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
+                       <div class="ps-shoe__variant normal"><img src="<?php echo $image_a;?>" alt=""><img src="<?php echo $image_b; ?>" alt=""><img src="<?php echo $image_c; ?>" alt=""><img src="<?php echo $image_d; ?>" alt=""></div>
                        <select class="ps-rating ps-shoe__rating">
                          <option value="1">1</option>
                          <option value="1">2</option>
