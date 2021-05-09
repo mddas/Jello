@@ -1,3 +1,19 @@
+<?php 
+include('class/Authentication_login_signup.php');
+$auth=new Authentication_login_signup();
+?>
+<?php
+if(isset($_POST['login'])){
+ $user_email=$_POST['user_email'];
+ $user_password=$_POST['user_password'];
+ $auth->LoginData($user_email,$user_password);
+ 
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,17 +51,17 @@
 								<p class="mb-0">Sign in to continue to WebkitX.</p>							
 							</div>
 							<div class="p-40">
-								<form action="https://multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/index.html" method="post">
+								<form action="" method="post">
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
-											<input type="text" class="form-control ps-15 bg-transparent" placeholder="Username">
+											<input type="text" name="user_email" class="form-control ps-15 bg-transparent" placeholder="Username">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text  bg-transparent"><i class="ti-lock"></i></span>
-											<input type="password" class="form-control ps-15 bg-transparent" placeholder="Password">
+											<input type="password" name="user_password" class="form-control ps-15 bg-transparent" placeholder="Password">
 										</div>
 									</div>
 									  <div class="row">
@@ -63,7 +79,7 @@
 										</div>
 										<!-- /.col -->
 										<div class="col-12 text-center">
-										  <button type="submit" class="btn btn-danger mt-10">SIGN IN</button>
+										  <button type="submit" name="login" class="btn btn-danger mt-10">SIGN IN</button>
 										</div>
 										<!-- /.col -->
 									  </div>

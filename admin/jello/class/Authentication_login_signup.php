@@ -24,13 +24,35 @@ class Authentication_login_signup{
              }
              else{
                  if($user_password1==$user_password2){
-                   $sql="INSERT INTO customer_detail (customer_name,customer_email,customer_password) VALUES ('$user_name','$user_email','$user_password1')";
+                   $sql="INSERT INTO Customer_Authentication (user_name,user_email,user_password) VALUES ('$user_name','$user_email','$user_password1')";
                    $insert=$this->db->INSERT($sql);
                  }
                  else{
                      echo "<script>alert('password not match..');</script>";
                  }
              }
+      }
+      public function LoginData($user_email,$user_password){
+          $user_email=$this->BugHunt->secure_data($user_email);
+          $user_password=$this->BugHunt->secure_data($user_password);
+          if(empty($user_email) || empty($user_password)){
+            echo "<script>alert('Field is empty! please fill the form')</script>";
+          }
+          else{
+              $this->LoginAuth($user_email,$user_password);
+          }
+      }
+
+      public function LoginAuth($user_email,$user_password){
+          $sql="SELECT * FROM Customer_Authentication where user_email='$user_email' AND user_password='$user_password'";
+          $result=$this->db->SELECT($sql);
+          $rows=$result->num_rows;
+          if($rows>0){
+            echo "<script>alert('You are Logged in sucessfully....');</script>";
+          }
+          else{
+            echo "<script>alert('Email and Password not match');</script>";
+          }
       }
 
 }
