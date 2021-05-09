@@ -26,6 +26,7 @@
         $image_c=$data['image_c'];
         $image_d=$data['image_d'];
         $product_name=$data['product_name'];
+        $product_id=$data['product_id'];
         ?>
 
 
@@ -42,7 +43,7 @@
                      </div>
                      <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
                      <img src="<?php echo $image_a;?>" alt="" style='height:350px;'>
-                     <a class="ps-shoe__overlay" href="product-detail.html"></a>
+                     <a class="ps-shoe__overlay" href="product_detail.php?pid=<?php echo $product_id;  ?>"></a>
                    </div>
                    <div class="ps-shoe__content">
                      <div class="ps-shoe__variants">

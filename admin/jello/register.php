@@ -1,3 +1,20 @@
+<?php
+include("class/Authentication_login_signup.php");
+$auth=new Authentication_login_signup();
+
+?>
+<?php
+if(isset($_POST['formsubmit'])){
+	$user_name=$_POST['user_name'];
+	$user_email=$_POST['user_email'];
+	$user_password1=$_POST['user_password1'];
+	$user_password2=$_POST['user_password2'];
+	$user_name=$auth->RegisterData($user_name,$user_email,$user_password1,$user_password2);
+}
+else{
+	echo "<script>alert('form is not set')</script>;";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,29 +52,29 @@
 								<p class="mb-0">Register a new membership</p>							
 							</div>
 							<div class="p-40">
-								<form action="https://multipurposethemes.com/admin/riday-admin-template/bs5/main-dark/index.html" method="post">
+								<form action="" method="post">
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
-											<input type="text" class="form-control ps-15 bg-transparent" placeholder="Full Name">
+											<input type="text" name="user_name" class="form-control ps-15 bg-transparent" placeholder="Full Name">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text bg-transparent"><i class="ti-email"></i></span>
-											<input type="email" class="form-control ps-15 bg-transparent" placeholder="Email">
+											<input type="email" name="user_email" class="form-control ps-15 bg-transparent" placeholder="Email">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text bg-transparent"><i class="ti-lock"></i></span>
-											<input type="password" class="form-control ps-15 bg-transparent" placeholder="Password">
+											<input type="password" name="user_password1" class="form-control ps-15 bg-transparent" placeholder="Password">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group mb-3">
 											<span class="input-group-text bg-transparent"><i class="ti-lock"></i></span>
-											<input type="password" class="form-control ps-15 bg-transparent" placeholder="Retype Password">
+											<input type="password" name="user_password2" class="form-control ps-15 bg-transparent" placeholder="Retype Password">
 										</div>
 									</div>
 									  <div class="row">
@@ -69,7 +86,7 @@
 										</div>
 										<!-- /.col -->
 										<div class="col-12 text-center">
-										  <button type="submit" class="btn btn-info margin-top-10">SIGN IN</button>
+										  <button type="submit" name="formsubmit" class="btn btn-info margin-top-10">SIGN IN</button>
 										</div>
 										<!-- /.col -->
 									  </div>
