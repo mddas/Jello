@@ -1,5 +1,4 @@
 <?php 
-include("admin/jello/class/Data_filter.php");
 $fm=new FilterData();
 $db=new Database(); 
 ?> 

@@ -4,7 +4,7 @@
 <div class="wrapper">
 
 <?php 
-include("include/navbar.html");
+include("include/navbar.php");
 include("include/left_navbar.html");
 include("include/add_new_menu.php");
 include("include/right_navbar.html");

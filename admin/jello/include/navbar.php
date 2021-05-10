@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['action']) && $_GET['action']="logout"){
+Session_Cookies::destroy();
+}
+?>
 <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">
 		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
@@ -231,7 +236,7 @@
 	      <!-- User Account-->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle p-0 text-dark hover-primary ms-md-30 ms-10" data-bs-toggle="dropdown" title="User">
-				<span class="ps-30 d-md-inline-block d-none">Hello,</span> <strong class="d-md-inline-block d-none">Alia</strong><img src="../images/avatar/avatar-11.png" class="user-image rounded-circle avatar bg-white mx-10" alt="User Image">
+				<span class="ps-30 d-md-inline-block d-none">Hello,</span> <strong class="d-md-inline-block d-none"><?php echo Session_Cookies::get('user_name'); ?></strong><img src="../images/avatar/avatar-11.png" class="user-image rounded-circle avatar bg-white mx-10" alt="User Image">
             </a>
             <ul class="dropdown-menu animated flipInX">
               <li class="user-body">
@@ -239,7 +244,7 @@
 				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted me-2"></i> My Wallet</a>
 				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" href="#"><i class="ti-lock text-muted me-2"></i> Logout</a>
+				 <a class="dropdown-item" href="?action=logout"><i class="ti-lock text-muted me-2"></i> Logout</a>
               </li>
             </ul>
           </li>	

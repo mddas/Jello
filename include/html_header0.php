@@ -1,5 +1,8 @@
 <?php
-include("admin/jello/class/Database_control.php");
+include("admin/jello/class/cookies_control.php");
+
+cookies_control::GetMyCookieId();
+
 $db=new Database();
 ?>
 <!DOCTYPE html>

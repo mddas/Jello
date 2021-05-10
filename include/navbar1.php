@@ -1,3 +1,8 @@
+<?php 
+include("admin/jello/class/Data_filter.php"); 
+include("admin/jello/class/session_cookies.php"); 
+$fm=new FilterData();
+?>
 <div class="header--sidebar"></div>
 <header class="header">
   <div class="header__top">
@@ -132,35 +137,39 @@
           <input class="form-control" type="text" placeholder="Search Product…">
           <button><i class="ps-icon-search"></i></button>
         </form>
+
+<!------navbar cart----->
+
         <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="ps-icon-shopping-cart"></i></a>
           <div class="ps-cart__listing">
             <div class="ps-cart__content">
+            <!-------one item in cart----->
+            <?php 
+            $temp_user_id=cookies_control::GetMyCookieId();
+            $temp_user_id=$fm->secure_data($temp_user_id);
+            $temp_user_id=$db->con->real_escape_string($temp_user_id);
+            //Session_Cookies::set('temp_user_id',$temp_user_id);
+            $sql="select * from Temp_Cart where temp_user_id='$temp_user_id'";
+            $result=$db->con->query($sql);
+            while($data = $result->fetch_assoc()) {
+               ?>
               <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
                 <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/1.jpg" alt=""></div>
-                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Amazin’ Glazin’</a>
+                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html"><?php echo $data['product_id']; ?></a>
                   <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
                 </div>
               </div>
-              <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
-                  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                </div>
-              </div>
-              <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
-                  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                </div>
-              </div>
-            </div>
+              <?php } ?>
+              <!-------one item in cart closed---->
+            <!-----</div> this div is closed and modified by md due to extra div. if any problem then remove this comment.----->
             <div class="ps-cart__total">
               <p>Number of items:<span>36</span></p>
               <p>Item Total:<span>£528.00</span></p>
             </div>
-            <div class="ps-cart__footer"><a class="ps-btn" href="cart.html">Check out<i class="ps-icon-arrow-left"></i></a></div>
+            <div class="ps-cart__footer"><a class="ps-btn" href="checkout.php">Check out<i class="ps-icon-arrow-left"></i></a></div>
           </div>
         </div>
+      <!------navbar cart----->  
         <div class="menu-toggle"><span></span></div>
       </div>
     </div>

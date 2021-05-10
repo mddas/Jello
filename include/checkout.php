@@ -1,5 +1,4 @@
 <?php
-include("admin/jello/class/Data_filter.php");
 $fm=new FilterData();
 $db=new Database();
 //check user login 
@@ -21,8 +20,16 @@ $db=new Database();
             </tr>
           </thead>
           <tbody>
+          <?php
+          $temp_user_id=Session_Cookies::get("temp_user_id");
+          $sql="select * from Temp_Cart where temp_user_id='$temp_user_id'";
+          $result=$db->con->query($sql);
+          while($data=$result->fetch_assoc());
+          {
+          ?>
+          <!---------product cart list open----->
             <tr>
-              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> air jordan One mid</a></td>
+              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""><?php echo $data['product_id'];?></a></td>
               <td>$150</td>
               <td>
                 <div class="form-group--number">
@@ -36,36 +43,9 @@ $db=new Database();
                 <div class="ps-remove"></div>
               </td>
             </tr>
-            <tr>
-              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/2.jpg" alt=""> The Crusty Croissant</a></td>
-              <td>$150</td>
-              <td>
-                <div class="form-group--number">
-                  <button class="minus"><span>-</span></button>
-                  <input class="form-control" type="text" value="2">
-                  <button class="plus"><span>+</span></button>
-                </div>
-              </td>
-              <td>$300</td>
-              <td>
-                <div class="ps-remove"></div>
-              </td>
-            </tr>
-            <tr>
-              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/3.jpg" alt="">The Rolling Pin</a></td>
-              <td>$150</td>
-              <td>
-                <div class="form-group--number">
-                  <button class="minus"><span>-</span></button>
-                  <input class="form-control" type="text" value="2">
-                  <button class="plus"><span>+</span></button>
-                </div>
-              </td>
-              <td>$300</td>
-              <td>
-                <div class="ps-remove"></div>
-              </td>
-            </tr>
+            <?php } ?>
+          <!-----------product cart list close--------->
+        
           </tbody>
         </table>
         <div class="ps-cart__actions">

@@ -17,17 +17,21 @@ class Database{
 
     public function SELECT($sql){
        $result=$this->con->query($sql) or die ($this->con->error.__line__);
-       return $result;
+       if($result->num_rows){
+         return $result;
+       }
+       else{
+          return false;
+       }
     }  
     public function INSERT($sql){
        
-        $insert= $this->con->query($sql) or die ($this->con->error.__line__);
-        if($insert){
-         echo "<script>alert('Sucessfully inserted...')</script>";
+        $insert= $this->con->query($sql); //or die ($this->con->error.__line__);
+        if($insert==1){
+        return "inserted sucessfully";
 
         }else{
-         echo "<script>alert(".$this->con->error.")</script>";
-           die("Error :(".$this->con->error.")".$this->con->error);
+             return $this->con->error;
         }
 
 

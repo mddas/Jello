@@ -9,11 +9,9 @@ if(isset($_POST['formsubmit'])){
 	$user_email=$_POST['user_email'];
 	$user_password1=$_POST['user_password1'];
 	$user_password2=$_POST['user_password2'];
-	$user_name=$auth->RegisterData($user_name,$user_email,$user_password1,$user_password2);
+	$result=$auth->RegisterData($user_name,$user_email,$user_password1,$user_password2);
 }
-else{
-	echo "<script>alert('form is not set')</script>;";
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +47,8 @@ else{
 						<div class="bg-white rounded10 shadow-lg">
 							<div class="content-top-agile p-20 pb-0">
 								<h2 class="text-primary">Get started with Us</h2>
-								<p class="mb-0">Register a new membership</p>							
+								<p class="mb-0">Register a new membership</p>
+								<span style="color:red;"><?php if(isset($_POST['formsubmit'])){ echo $result; }?></span>					
 							</div>
 							<div class="p-40">
 								<form action="" method="post">
