@@ -148,7 +148,7 @@ $fm=new FilterData();
             $temp_user_id=cookies_control::GetMyCookieId();
             $temp_user_id=$fm->secure_data($temp_user_id);
             $temp_user_id=$db->con->real_escape_string($temp_user_id);
-            //Session_Cookies::set('temp_user_id',$temp_user_id);
+            $_SESSION['temp_user_id']=$temp_user_id;
             $sql="select * from Temp_Cart where temp_user_id='$temp_user_id'";
             $result=$db->con->query($sql);
             while($data = $result->fetch_assoc()) {

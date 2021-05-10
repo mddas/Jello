@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 09, 2021 at 01:49 PM
+-- Generation Time: May 10, 2021 at 07:39 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -76,6 +76,9 @@ CREATE TABLE `Customer_Authentication` (
 --
 
 INSERT INTO `Customer_Authentication` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
+(16, 'mddas', 'alpha@gmail.com', 'md'),
+(13, 'manoj', 'ayon@gmail.com', 'm'),
+(15, 'manoj', 'lolu@gmail.com', 'md'),
 (7, 'manoj', 'mddasgudiya@gmail.com', 'md');
 
 -- --------------------------------------------------------
@@ -262,8 +265,33 @@ INSERT INTO `sub_sub_category` (`sub_sub_id`, `which_main_category`, `which_sub_
 
 CREATE TABLE `Temp_Cart` (
   `Temp_cart_id` int(44) NOT NULL,
+  `temp_user_id` int(33) NOT NULL,
   `product_id` int(44) NOT NULL,
-  `Temp_quantity` int(44) DEFAULT NULL
+  `product_quantity` int(44) DEFAULT NULL,
+  `product_size` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Temp_Cart`
+--
+
+INSERT INTO `Temp_Cart` (`Temp_cart_id`, `temp_user_id`, `product_id`, `product_quantity`, `product_size`) VALUES
+(1, 18, 41, 1, 1),
+(2, 18, 39, 1, 1),
+(3, 18, 38, 1, 1),
+(4, 18, 40, 1, 1),
+(5, 18, 40, 1, 1),
+(6, 18, 40, 1, 1),
+(7, 18, 40, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_user`
+--
+
+CREATE TABLE `temp_user` (
+  `cookies_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -345,6 +373,12 @@ ALTER TABLE `Temp_Cart`
   ADD PRIMARY KEY (`Temp_cart_id`);
 
 --
+-- Indexes for table `temp_user`
+--
+ALTER TABLE `temp_user`
+  ADD PRIMARY KEY (`cookies_user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -364,7 +398,7 @@ ALTER TABLE `CART`
 -- AUTO_INCREMENT for table `Customer_Authentication`
 --
 ALTER TABLE `Customer_Authentication`
-  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `main_category`
@@ -406,7 +440,13 @@ ALTER TABLE `sub_sub_category`
 -- AUTO_INCREMENT for table `Temp_Cart`
 --
 ALTER TABLE `Temp_Cart`
-  MODIFY `Temp_cart_id` int(44) NOT NULL AUTO_INCREMENT;
+  MODIFY `Temp_cart_id` int(44) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `temp_user`
+--
+ALTER TABLE `temp_user`
+  MODIFY `cookies_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

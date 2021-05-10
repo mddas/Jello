@@ -91,7 +91,7 @@ if(isset($_GET["show"])){
                 </div>
                 <div class="ps-product__block ps-product__size">
                   <h4>CHOOSE SIZE<a href="#">Size chart</a></h4>
-                  <select class="ps-select selectpicker">
+                  <select class="ps-select selectpicker" id="size">
                     <option value="1">Select Size</option>
                     <option value="2">4</option>
                     <option value="3">4.5</option>
@@ -107,10 +107,10 @@ if(isset($_GET["show"])){
                     <option value="3">10</option>
                   </select>
                   <div class="form-group">
-                    <input class="form-control" type="number" value="1">
+                    <input class="form-control" type="number" value="1" id="quantity">
                   </div>
                 </div>
-                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="checkout.php?pid=<?php echo $product_id;?>">Add to cart<i class="ps-icon-next"></i></a>
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" onclick="submitcart();">Add to cart<i class="ps-icon-next"></i></a>
                   <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
                 </div>
               </div>
@@ -203,3 +203,13 @@ if(isset($_GET["show"])){
           </div>
         </div>
       </div><!----------this is Add  to Cart overview,comment,review-->
+      <script>
+        function submitcart(){
+          var size=document.getElementById("size").value;
+          var quantity=document.getElementById("quantity").value;
+          var pid=<?php echo $product_id;?>;
+
+          url="checkout.php?"+"action=addcart"+"&&pid="+pid+"&&size="+size+"&&quantity="+quantity;
+          window.location.href = url;
+        }
+      </script>

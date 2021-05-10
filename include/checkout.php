@@ -1,9 +1,24 @@
 <?php
+include("admin/jello/class/cart_manage.php"); 
+$send_to_cart=new cart_manage();
+
 $fm=new FilterData();
 $db=new Database();
 //check user login 
 //check cookies 
 //check data on session
+?>
+<?php
+if(isset($_GET['action']) && $_GET['action']=="addcart"){
+  $temp_user_id=$_SESSION['temp_user_id'];
+  $product_id=$_GET['pid'];
+  $product_quantity=$_GET['quantity'];
+  $product_size=$_GET['size'];
+  
+  $result=$send_to_cart->getData($temp_user_id,$product_id,$product_quantity,$product_size);
+  echo $result."md5";
+ // $sql="INSERT INTO Temp_Cart (product_id,temp_user_id) VALUES ('$Add_Pid',temp_user_id)";
+}
 ?>
 
 <div class="ps-content pt-80 pb-80">
@@ -24,12 +39,12 @@ $db=new Database();
           $temp_user_id=Session_Cookies::get("temp_user_id");
           $sql="select * from Temp_Cart where temp_user_id='$temp_user_id'";
           $result=$db->con->query($sql);
-          while($data=$result->fetch_assoc());
+          while($data=$result->fetch_assoc())
           {
           ?>
           <!---------product cart list open----->
             <tr>
-              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""><?php echo $data['product_id'];?></a></td>
+              <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""><?php echo $temp_user_id."md";?></a></td>
               <td>$150</td>
               <td>
                 <div class="form-group--number">
