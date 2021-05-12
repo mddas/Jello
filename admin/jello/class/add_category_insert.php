@@ -31,31 +31,36 @@ class AddCategory{
         $which_subcategory=$this->db->con->real_escape_string($which_subcategory);
         $category_image=$this->db->con->real_escape_string($category_image);
 
-       
+if(empty($category_name)){
+    return "Category name Empty!!!";
+}
      
 if($category_type=="main_category"){
 
 $sql = "INSERT INTO main_category (category_name, category_description, category_image) VALUES ('$category_name', '$category_description', '$category_image')";
 $execute=$this->db->INSERT($sql);
+return $execute;
 }
 else if($category_type=="sub_category"){
 
 //then insert in sub_category table
 $sql="INSERT INTO sub_category (sub_categoryname, which_main_category, sub_categorydescription, sub_catogeryimage) VALUES ('$category_name','$which_maincategory', '$category_description', '$category_image');";
 $execute=$this->db->INSERT($sql);
+return $execute;
 }
 else if($category_type=="sub_sub_category"){
 $sql = "INSERT INTO sub_sub_category (sub_sub_name,which_main_category,which_sub_category,sub_sub_description, sub_sub_image) VALUES ('$category_name','$which_maincategory','$which_subcategory','$category_description', '$category_image');";
 $execute=$this->db->INSERT($sql);
+return $execute;
 }
 else
 {
-   echo "not any category match";
+   return "not any category match";
 } 
 
     }
     else{
-        echo "<script>alert('Field are Empty')</script>";
+        return "Category Name is empty...";
     }
 }
 

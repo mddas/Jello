@@ -91,7 +91,7 @@ if(isset($_POST['formsubmit'])){
 									  </div>
 								</form>				
 								<div class="text-center">
-									<p class="mt-15 mb-0">Already have an account?<a href="auth_login.html" class="text-danger ms-5"> Sign In</a></p>
+									<p class="mt-15 mb-0">Already have an account?<a href="login.php" class="text-danger ms-5"> Sign In</a></p>
 								</div>
 							</div>
 						</div>								

@@ -6538,3 +6538,25 @@ html .bg--parallax {
   padding-left: 100px; }
 
 /*# sourceMappingURL=style.css.map */
+
+.ps-cart-item.remove-item {
+  display: none;
+}
+
+
+/* search fix */
+#searchshow .list-group-item {
+  text-align: initial;
+  color: gray;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+}
+
+
+/* For Hero Banner 
+
+.slotholder .tp-bgimg.defaultimg {
+  background-size: contain !important;
+}
+*/

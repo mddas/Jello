@@ -1,4 +1,10 @@
 <?php 
+if(!isset($_SESSION)){ 
+session_start();
+}
+
+?>
+<?php 
 $fm=new FilterData();
 $db=new Database(); 
 ?> 
@@ -16,7 +22,8 @@ if(isset($_GET["pid"])){
   $image_c=$data['image_c'];
   $image_d=$data['image_d'];
   $product_name=$data['product_name'];
-}
+  $_SESSION["publish"]=true;
+  }
 if(isset($_GET["show"])){
   $show=$_GET['show'];
   $temp=$image_a;
@@ -209,7 +216,7 @@ if(isset($_GET["show"])){
           var quantity=document.getElementById("quantity").value;
           var pid=<?php echo $product_id;?>;
 
-          url="checkout.php?"+"action=addcart"+"&&pid="+pid+"&&size="+size+"&&quantity="+quantity;
+          url="addTocart.php?"+"action=addcart"+"&&pid="+pid+"&&size="+size+"&&quantity="+quantity;
           window.location.href = url;
         }
       </script>

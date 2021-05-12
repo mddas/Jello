@@ -1,4 +1,8 @@
 <?php
+include("class/session_cookies.php");
+Session_Cookies::checksession();
+?>
+<?php
 if(isset($_GET['action']) && $_GET['action']="logout"){
 Session_Cookies::destroy();
 }

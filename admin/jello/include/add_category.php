@@ -8,7 +8,7 @@
   ?>
  
 <?php
-
+$isInsert="";
   if(isset($_POST['add'])){
     //$category_name=htmlspecialchars($_POST['category_name'], ENT_QUOTES);
     $category_type=$_POST['category_type'];
@@ -27,7 +27,7 @@
         $which_subcategory=$_POST['sub_category'];
    
     }
-	$send->FormInsert($category_type,$category_name,$category_status,$category_description,$category_metatitle,$category_metakeyword,$which_maincategory,$which_subcategory);
+	$isInsert=$send->FormInsert($category_type,$category_name,$category_status,$category_description,$category_metatitle,$category_metakeyword,$which_maincategory,$which_subcategory);
 
 }
 
@@ -73,15 +73,13 @@
 											<option value="main_category">Main Category</option>
 											<?php 
                                                  $sql="select * from main_category";
-												 $result=$db->con->query($sql);
-												 $count=$result->num_rows;
+												 $count=$db->HowManyRows($sql);
 												 if($count>0){
 													 ?>
 											<option value="sub_category">Sub Category</option>
 											<?php 
                                                  $sql="select * from sub_category";
-												 $result=$db->SELECT($sql);
-												 $count=$result->num_rows;
+												 $count=$db->HowManyRows($sql);
 												 if($count>0){
 													 ?>
 											<option value="sub_sub_category">Sub Sub-Category</option>
@@ -91,7 +89,11 @@
 									</div>
 								</div>
 								<!--/span-->
-								
+								<div class="col-md-6">
+										<div class="form-group">
+											<h4 id="sucess" style="float:right;color:green;"><?php echo $isInsert; ?></h4>
+										</div>
+									</div>
 								<!--/span-->
 							</div>
 							<!--/row-->
@@ -105,11 +107,12 @@
 											<?php  
 								      		$sql="select * from main_category";
 											$result=$db->SELECT($sql);
+											if($result!=false){
 											while($data=$result->fetch_assoc()){
 												$main_category=$data['category_name'];
 											?>
 											<option value="<?php echo $main_category ; ?>"><?php echo $main_category ; ?></option>
-											<?php } ?>
+											<?php }} ?>
 					
 										</select>
 									</div>
@@ -122,11 +125,12 @@
 										<?php  
 								      		$sql="select * from sub_category";
 											$result=$db->SELECT($sql);
+											if($result!=false){
 											while($data=$result->fetch_assoc()){
 												$main_category=$data['sub_categoryname'];
 											?>
 											<option value="<?php echo $main_category ; ?>"><?php echo $main_category ; ?></option>
-											<?php } ?>
+											<?php }} ?>
 										</select>
 									</div>
 								</div>

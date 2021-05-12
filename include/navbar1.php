@@ -1,7 +1,30 @@
 <?php 
+if(!isset($_SESSION)){ 
+session_start();
+}
+
+?>
+<?php 
 include("admin/jello/class/Data_filter.php"); 
 include("admin/jello/class/session_cookies.php"); 
 $fm=new FilterData();
+?>
+<?php 
+if(isset($_SESSION['temp_user_id'])){
+$temp_user_id=$_SESSION['temp_user_id'];
+$sqlTotal="select * from Temp_Cart where temp_user_id='$temp_user_id';";
+$total=$db->con->query($sqlTotal);
+$total=$total->num_rows;
+}
+else{
+  $total=0;
+}
+if(isset($_SESSION['user_id'])){
+  $url='admin/jello/login.php';
+}
+else{
+  $url='admin/jello/register.php';
+}
 ?>
 <div class="header--sidebar"></div>
 <header class="header">
@@ -12,7 +35,7 @@ $fm=new FilterData();
               <p>460 West 34th Street, 15th floor, New York  -  Hotline: 804-377-3580 - 804-399-3580</p>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-              <div class="header__actions"><a href="#">Login & Regiser</a>
+              <div class="header__actions"><a href="<?php echo $url ;?>">Login & Regiser</a>
                 <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD<i class="fa fa-angle-down"></i></a>
                   <ul class="dropdown-menu">
                     <li><a href="#"><img src="images/flag/usa.svg" alt=""> USD</a></li>
@@ -134,13 +157,17 @@ $fm=new FilterData();
       </div>
       <div class="navigation__column right">
         <form class="ps-search--header" action="do_action" method="post">
-          <input class="form-control" type="text" placeholder="Search Product…">
+          <input class="form-control" type="text" id="search" placeholder="Search Product…" onkeyup="Search_all();">
           <button><i class="ps-icon-search"></i></button>
-        </form>
-
+          <!---here is search item to show up----->
+          <ul class="list-group" id="searchshow" style="position:absolute;siz:16px;color:blue;width:220px;margin-top:2px;">
+          </ul>
+          <!---here is search item to show up----->
+       </form>
+        
 <!------navbar cart----->
-
-        <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="ps-icon-shopping-cart"></i></a>
+      
+        <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i><?php echo $total;?></i></span><i class="ps-icon-shopping-cart"></i></a>
           <div class="ps-cart__listing">
             <div class="ps-cart__content">
             <!-------one item in cart----->
@@ -149,24 +176,24 @@ $fm=new FilterData();
             $temp_user_id=$fm->secure_data($temp_user_id);
             $temp_user_id=$db->con->real_escape_string($temp_user_id);
             $_SESSION['temp_user_id']=$temp_user_id;
-            $sql="select * from Temp_Cart where temp_user_id='$temp_user_id'";
+            $sql="SELECT * from Temp_Cart INNER JOIN product_detail ON Temp_Cart.product_id=product_detail.product_id INNER JOIN images on images.product_id =product_detail.product_id WHERE Temp_Cart.temp_user_id='$temp_user_id';";
             $result=$db->con->query($sql);
             while($data = $result->fetch_assoc()) {
                ?>
-              <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/1.jpg" alt=""></div>
-                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html"><?php echo $data['product_id']; ?></a>
-                  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+              <div class="ps-cart-item"><a class="ps-cart-item__close" id="<?php echo $data['product_id'];?>"  href="#" ></a>
+                <div class="ps-cart-item__thumbnail"><a href="product_detail.php?pid=<?php echo $data['product_id'];?>"></a><img src="<?php echo $data['image_a'];?>" alt=""></div>
+                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="addTocart.php"><?php echo $data['product_name']; ?></a>
+                  <p><span>Quantity:<i><?php echo $data['product_quantity'];?></i></span><span>Total:<i><?php echo $data['product_price'];?></i></span></p>
                 </div>
               </div>
               <?php } ?>
-              <!-------one item in cart closed---->
+              <!-------one item in cart closedj---->
             <!-----</div> this div is closed and modified by md due to extra div. if any problem then remove this comment.----->
             <div class="ps-cart__total">
               <p>Number of items:<span>36</span></p>
               <p>Item Total:<span>£528.00</span></p>
             </div>
-            <div class="ps-cart__footer"><a class="ps-btn" href="checkout.php">Check out<i class="ps-icon-arrow-left"></i></a></div>
+            <div class="ps-cart__footer"><a class="ps-btn" href="addTocart.php">Check out<i class="ps-icon-arrow-left"></i></a></div>
           </div>
         </div>
       <!------navbar cart----->  

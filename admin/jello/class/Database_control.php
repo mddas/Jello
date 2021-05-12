@@ -23,7 +23,21 @@ class Database{
        else{
           return false;
        }
-    }  
+    }
+    
+    public function HowManyRows($sql){
+      $result=$this->con->query($sql) or die ($this->con->error.__line__);
+      
+      if($result->num_rows){
+         return $result->num_rows;
+      }
+      else{
+         return 0;
+      }
+
+    }
+
+
     public function INSERT($sql){
        
         $insert= $this->con->query($sql); //or die ($this->con->error.__line__);
@@ -40,6 +54,9 @@ class Database{
         return $this->con->query($sql) or die ($this->con->error.__line__);
      }   
      
+     public function DELETE($sql){
+      return $this->con->query($sql) or die ($this->con->error.__line__);
+   }
     
 
 }

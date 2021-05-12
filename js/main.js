@@ -705,4 +705,53 @@
 
 })(jQuery);
 
-//# sourceMappingURL=main.js.map
+ $(document).ready(function(){
+     $(".ps-cart-item__close").on("click" , function(e){
+         e.preventDefault
+         tgm = e.currentTarget.getAttribute("id");
+         document.getElementById(tgm).parentElement.classList.add("remove-item");
+         //mytst.classList.add("remove-item");
+          //  let tgm = $(this).attr("id")
+         //  let mytst = document.getElementById(tgm).parentElement;
+        //  mytst.classList.add("remove-item");
+        sendToremove(tgm);
+})
+});
+
+function sendToremove(pid){
+ 
+    $.ajax({  
+        type: "POST",  
+        url: "admin/jello/class/remove_cart_item.php", 
+        data: "product_id_to_delete="+ pid,
+        success:function (data) {
+                          
+            //$('#id').html(data);
+            //alert(data);
+        }
+    });
+}
+
+function Search_all(){
+// alert("k");
+ var val = document.getElementById("search").value;
+ sendTosearch(val);
+}
+
+function sendTosearch(val){
+    $.ajax({  
+        type: "POST",  
+        url: "admin/jello/class/search.php", 
+        data: "what_to_search="+ val,
+        success:function (data) {
+                          
+            $('#searchshow').html(data);
+           
+        }
+    });
+}
+
+function setval(val){
+document.getElementById("search").value=val;
+document.getElementsByName("list-group-item").style="display:none;";
+}

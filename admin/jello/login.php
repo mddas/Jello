@@ -86,7 +86,7 @@ if(isset($_POST['login'])){
 									  </div>
 								</form>	
 								<div class="text-center">
-									<p class="mt-15 mb-0">Don't have an account? <a href="auth_register.html" class="text-warning ms-5">Sign Up</a></p>
+									<p class="mt-15 mb-0">Don't have an account? <a href="register.php" class="text-warning ms-5">Sign Up</a></p>
 								</div>	
 							</div>						
 						</div>

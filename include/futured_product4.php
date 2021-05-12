@@ -20,6 +20,7 @@
       <?php 
       $sql="SELECT * from images INNER JOIN product_detail on images.product_id=product_detail.product_id;";
       $result=$db->SELECT($sql);
+      if($result!=false){
       while($data=$result->fetch_assoc()){
         $image_a=$data['image_a'];
         $image_b=$data['image_b'];
@@ -28,11 +29,7 @@
         $product_name=$data['product_name'];
         $product_id=$data['product_id'];
         ?>
-
-
-
-
-             <div class="grid-item kids">
+            <div class="grid-item kids">
                <div class="grid-item__content-wrapper">
                  <div class="ps-shoe mb-30">
                    <div class="ps-shoe__thumbnail">
@@ -64,7 +61,7 @@
                  </div>
                </div>
              </div>
-             <?php } ?>
+             <?php } }?>
             
                      <!-----product list closed-->
        
