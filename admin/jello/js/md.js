@@ -39,3 +39,16 @@ function sendToajax(value){
     });
 }
 
+$(document).ready(function(){
+    var which_main_category=document.getElementById("main-cat").value;
+    $.ajax({  
+        type: "POST",  
+        url: "class/sub_sub_add_category_ajax.php", 
+        data: "under_which_main_category="+ which_main_category,
+        success:function (data) {
+                          
+            $('#sub-sub').html(data);
+        }
+    });
+  });
+

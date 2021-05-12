@@ -103,7 +103,7 @@ $isInsert="";
 								<div class="col-md-6" id="main_category">
 									<div class="form-group">
 										<label class="fw-700 fs-16 form-label">Under Main Category</label>
-										<select class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category" onchange="sendToajax(this.value)">
+										<select id="main-cat" class="form-select" data-placeholder="Choose a Category" tabindex="1" name="main_category" onchange="sendToajax(this.value)">
 											<?php  
 								      		$sql="select * from main_category";
 											$result=$db->SELECT($sql);

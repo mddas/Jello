@@ -53,8 +53,8 @@ class FormInsert{
             return false;
         }else{
         $sql = "INSERT INTO product_detail (product_name, product_title, product_category, product_sub_category, product_sub_sub_category, product_status, product_price, product_discount, product_description, product_brand, meta_title, meta_keyword) VALUES ('$product_name', '$product_title', '$main_category','$sub_category','$sub_sub_categoryname','$status','$product_price','$product_discount','$product_description','$prduct_brand','$meta_title','$meta_keyword');";
-        $this->db->INSERT($sql);
-        return TRUE;
+        $result=$this->db->INSERT($sql);
+        return $result;
         }
 
     }

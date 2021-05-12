@@ -11,7 +11,7 @@ include("include/notification2.html");
        include("include/futured_product4.php");
        include("include/crousel5.html");
        include("include/unknown6.html");
-       include("include/top_sells7.html");
+       include("include/top_sells7.php");
        include("include/background_image8.html");
        include("include/our_story9.html");
        include("include/contact_us10.html");

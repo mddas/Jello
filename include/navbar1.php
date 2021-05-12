@@ -106,13 +106,14 @@ else{
                       <h4 class="mega-heading"><?php echo $sub_category; ?></h4>
                       <ul class="mega-item">
                            <?php
-                      $sub_sub_sql="SELECT * FROM `sub_sub_category`;";
+              $sub_sub_sql="SELECT * FROM `sub_sub_category`;";
              $sub_sub_result=$db->con->query($sub_sub_sql);
             while($sub_sub_data=$sub_sub_result->fetch_assoc())
               {
                     
                     $in_sub_sub_which_sub_category=$sub_sub_data['which_sub_category'];
-                   if($in_sub_sub_which_sub_category==$sub_category){
+                    $in_sub_sub_which_main_category=$sub_sub_data['which_main_category'];
+                   if($in_sub_sub_which_sub_category==$sub_category && $in_sub_sub_which_main_category==$which_main_category){
                    $sub_sub_category=$sub_sub_data['sub_sub_name'];
                    ?>
                         <li><a href="product-listing.html"><?php echo $sub_sub_category;?></a></li>
@@ -135,18 +136,7 @@ else{
                 </div>
               </li>
               <?php } ?>
-            
-              <li class="menu-item menu-item-has-children dropdown"><a href="#">News</a>
-                    <ul class="sub-menu">
-                      <li class="menu-item menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
-                            <ul class="sub-menu">
-                              <li class="menu-item"><a href="blog-grid.html">Blog Grid 1</a></li>
-                              <li class="menu-item"><a href="blog-grid-2.html">Blog Grid 2</a></li>
-                            </ul>
-                      </li>
-                      <li class="menu-item"><a href="blog-list.html">Blog List</a></li>
-                    </ul>
-              </li>
+          
               <li class="menu-item menu-item-has-children dropdown"><a href="#">Contact</a>
                     <ul class="sub-menu">
                       <li class="menu-item"><a href="contact-us.html">Contact Us #1</a></li>
@@ -190,7 +180,7 @@ else{
               <!-------one item in cart closedj---->
             <!-----</div> this div is closed and modified by md due to extra div. if any problem then remove this comment.----->
             <div class="ps-cart__total">
-              <p>Number of items:<span>36</span></p>
+              <p>Number of items:<span><?php echo $total;?></span></p>
               <p>Item Total:<span>£528.00</span></p>
             </div>
             <div class="ps-cart__footer"><a class="ps-btn" href="addTocart.php">Check out<i class="ps-icon-arrow-left"></i></a></div>

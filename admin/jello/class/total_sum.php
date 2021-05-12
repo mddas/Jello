@@ -11,34 +11,17 @@
 
     public function TotalMenu(){
     $sql="select * from product_detail";
-    $result=$this->db->SELECT($sql);
-    if($result!=false){
-    $total=$result->num_rows;
-    return $total;
-    }
-    else{
-      return 0;
-    }
+    $total_menu=$this->db->HowManyRows($sql);
+    return $total_menu;
       }
 
       public function TotalCustomers(){
        $sql="select * from Customer_Authentication";
-       $result=$this->db->SELECT($sql);
-       if($result!=false){
-       $totalPermanent=$result->num_rows;
-       }
-       else{
-        $totalPermanent=0;
-       }
-
+       $totalPermanent=$this->db->HowManyRows($sql);
+      
        $sql="select * from temp_user";
-       $result=$this->db->SELECT($sql);
-       if($result!=false){
-       $total_temp_user=$result->num->rows;
-       }
-       else{
-         $total_temp_user=0;
-       }
+       $total_temp_user=$this->db->HowManyRows($sql);
+
        $total=$totalPermanent+$total_temp_user;
        return $total;
 
@@ -46,14 +29,8 @@
       
       public function TotalOrders(){
         $sql="select * from Temp_Cart";
-        $result=$this->db->SELECT($sql);
-        if($result!=false){
-        $total=$result->num_rows;
-        return $total;
-        }
-        else{
-          return 0;
-        }
+        $total_order=$this->db->HowManyRows($sql);  
+        return $total_order;     
         
       }
       public function TotalIncome(){

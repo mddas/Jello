@@ -18,7 +18,7 @@
 
       <!-----here is all product list----->
       <?php 
-      $sql="SELECT * from images INNER JOIN product_detail on images.product_id=product_detail.product_id;";
+      $sql="SELECT * from images INNER JOIN product_detail on images.product_id=product_detail.product_id ORDER BY rand();";
       $result=$db->SELECT($sql);
       if($result!=false){
       while($data=$result->fetch_assoc()){
@@ -28,6 +28,7 @@
         $image_d=$data['image_d'];
         $product_name=$data['product_name'];
         $product_id=$data['product_id'];
+        $product_price=$data['product_price'];
         ?>
             <div class="grid-item kids">
                <div class="grid-item__content-wrapper">
@@ -44,7 +45,7 @@
                    </div>
                    <div class="ps-shoe__content">
                      <div class="ps-shoe__variants">
-                       <div class="ps-shoe__variant normal"><img src="<?php echo $image_a;?>" alt=""><img src="<?php echo $image_b; ?>" alt=""><img src="<?php echo $image_c; ?>" alt=""><img src="<?php echo $image_d; ?>" alt=""></div>
+                       <div class="ps-shoe__variant normal"><img src="<?php echo $image_a;?>" alt="" style='height:50px;'><img src="<?php echo $image_b; ?>" alt="" style='height:50px;'><img src="<?php echo $image_c; ?>" alt="" style='height:50px;'><img src="<?php echo $image_d; ?>" alt="" style='height:50px;'></div>
                        <select class="ps-rating ps-shoe__rating">
                          <option value="1">1</option>
                          <option value="1">2</option>
@@ -55,7 +56,7 @@
                      </div>
                      <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#"><?php echo $product_name; ?></a>
                        <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
-                         <del>£220</del> £ 120</span>
+                         <del>£220</del> <?php echo $product_price;?></span>
                      </div>
                    </div>
                  </div>

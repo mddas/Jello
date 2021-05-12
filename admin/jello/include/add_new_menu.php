@@ -6,6 +6,7 @@ $SendData=new FormInsert();
 ?>
 
 <?php
+$output="";
 if(isset($_POST['submit'])){
     
     $product_name=$_POST['product_name'];
@@ -144,7 +145,7 @@ if(isset($_POST['submit'])){
 								<!--/span-->
 								<div class="col-md-6">
 									<div class="form-group">
-									   <label class="fw-700 fs-16 form-label">Title</label>
+									   <label class="fw-700 fs-16 form-label">Title  <p  style="float:right;color:green;"><?php echo " "." ".$output; ?></p></label>
 									   <input type="text" class="form-control" placeholder="product title" name="product_title">
 									</div>
 								</div>

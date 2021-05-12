@@ -85,7 +85,7 @@ if(isset($_GET['action']) && $_GET['action']=="addcart"){
               </div>
             </div>
             <div class="form-group">
-              <button class="ps-btn ps-btn--gray">Continue Shopping</button>
+              <button class="ps-btn ps-btn--gray"><a href="index.php">Continue Shopping</a></button>
             </div>
           </div>
           <div class="ps-cart__total">

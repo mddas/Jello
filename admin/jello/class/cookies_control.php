@@ -8,7 +8,7 @@ class cookies_control{
 
     public static function set($cookie_name,$cookie_value){
         
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+        setcookie($cookie_name, $cookie_value, time() + (8688400 * 55), "/"); // 86400 = 1 day
         return $cookie_value;
     }
 
