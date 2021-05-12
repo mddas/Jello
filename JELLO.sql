@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 10, 2021 at 07:39 PM
+-- Generation Time: May 12, 2021 at 12:09 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -76,10 +76,7 @@ CREATE TABLE `Customer_Authentication` (
 --
 
 INSERT INTO `Customer_Authentication` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
-(16, 'mddas', 'alpha@gmail.com', 'md'),
-(13, 'manoj', 'ayon@gmail.com', 'm'),
-(15, 'manoj', 'lolu@gmail.com', 'md'),
-(7, 'manoj', 'mddasgudiya@gmail.com', 'md');
+(21, 'manoj', 'mddasgudiya@gmail.com', 'md');
 
 -- --------------------------------------------------------
 
@@ -100,11 +97,27 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`product_id`, `image_a`, `image_b`, `image_c`, `image_d`) VALUES
-(36, 'admin/jello/productimages/36a.jpg', NULL, NULL, NULL),
-(38, 'admin/jello/productimages/38a.jpeg', 'admin/jello/productimages/38b.jpeg', 'admin/jello/productimages/38c.jpeg', 'admin/jello/productimages/38d.jpeg'),
-(39, 'admin/jello/productimages/39a.jpg', 'admin/jello/productimages/39b.jpg', 'admin/jello/productimages/39c.jpg', 'admin/jello/productimages/39d.jpg'),
-(40, 'admin/jello/productimages/40a.png', 'admin/jello/', 'admin/jello/productimages/40c.png', 'admin/jello/'),
-(41, 'admin/jello/productimages/41a.png', 'admin/jello/productimages/41b.png', 'admin/jello/productimages/41c.png', 'admin/jello/productimages/41d.png');
+(42, 'admin/jello/productimages/42a.png', 'admin/jello/productimages/42b.png', 'admin/jello/productimages/42c.png', 'admin/jello/productimages/42d.png'),
+(43, 'admin/jello/productimages/43a.png', 'admin/jello/productimages/43b.jpg', 'admin/jello/productimages/43c.png', 'admin/jello/productimages/43d.png'),
+(44, 'admin/jello/productimages/44a.png', 'admin/jello/productimages/44b.jpg', 'admin/jello/productimages/44c.png', 'admin/jello/productimages/44d.png'),
+(45, 'admin/jello/productimages/45a.png', 'admin/jello/productimages/45b.jpg', 'admin/jello/productimages/45c.png', 'admin/jello/productimages/45d.png'),
+(46, 'admin/jello/productimages/46a.jpeg', 'admin/jello/productimages/46b.jpeg', 'admin/jello/productimages/46c.jpeg', 'admin/jello/productimages/46d.jpeg'),
+(47, 'admin/jello/productimages/47a.jpeg', 'admin/jello/productimages/47b.jpeg', 'admin/jello/productimages/47c.jpeg', 'admin/jello/productimages/47d.jpeg'),
+(48, 'admin/jello/productimages/48a.jpeg', 'admin/jello/productimages/48b.jpeg', 'admin/jello/productimages/48c.jpeg', 'admin/jello/productimages/48d.jpeg'),
+(49, 'admin/jello/productimages/49a.jpeg', 'admin/jello/productimages/49b.jpeg', 'admin/jello/productimages/49c.jpeg', 'admin/jello/productimages/49d.jpeg'),
+(50, 'admin/jello/productimages/50a.jpeg', 'admin/jello/productimages/50b.jpeg', 'admin/jello/productimages/50c.jpeg', 'admin/jello/productimages/50d.jpeg'),
+(51, 'admin/jello/productimages/51a.jpeg', 'admin/jello/productimages/51b.jpeg', 'admin/jello/productimages/51c.jpeg', 'admin/jello/productimages/51d.jpeg'),
+(52, 'admin/jello/productimages/52a.jpeg', 'admin/jello/productimages/52b.jpeg', 'admin/jello/productimages/52c.jpeg', 'admin/jello/productimages/52d.jpeg'),
+(53, 'admin/jello/productimages/53a.jpeg', 'admin/jello/productimages/53b.jpeg', 'admin/jello/productimages/53c.jpeg', 'admin/jello/productimages/53d.jpeg'),
+(54, 'admin/jello/productimages/54a.jpg', 'admin/jello/productimages/54b.png', 'admin/jello/productimages/54c.png', 'admin/jello/productimages/54d.jpg'),
+(55, 'admin/jello/productimages/55a.jpg', 'admin/jello/productimages/55b.png', 'admin/jello/productimages/55c.png', 'admin/jello/productimages/55d.jpg'),
+(56, 'admin/jello/productimages/56a.jpg', 'admin/jello/productimages/56b.png', 'admin/jello/productimages/56c.png', 'admin/jello/productimages/56d.jpg'),
+(57, 'admin/jello/productimages/57a.jpg', 'admin/jello/productimages/57b.png', 'admin/jello/productimages/57c.png', 'admin/jello/productimages/57d.jpg'),
+(58, 'admin/jello/productimages/58a.jpg', 'admin/jello/productimages/58b.png', 'admin/jello/productimages/58c.png', 'admin/jello/productimages/58d.jpg'),
+(59, 'admin/jello/productimages/59a.jpg', 'admin/jello/productimages/59b.png', 'admin/jello/productimages/59c.png', 'admin/jello/productimages/59d.jpg'),
+(60, 'admin/jello/productimages/60a.jpg', 'admin/jello/productimages/60b.png', 'admin/jello/productimages/60c.png', 'admin/jello/productimages/60d.jpg'),
+(61, 'admin/jello/productimages/61a.jpg', 'admin/jello/productimages/61b.png', 'admin/jello/productimages/61c.png', 'admin/jello/productimages/61d.jpg'),
+(62, 'admin/jello/productimages/62a.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,8 +137,10 @@ CREATE TABLE `main_category` (
 --
 
 INSERT INTO `main_category` (`category_id`, `category_name`, `category_description`, `category_image`) VALUES
-(38, 'men', 'Description of Category', 'imagenull'),
-(39, 'Women', 'Description of Category', 'imagenull');
+(40, 'Men', 'All the male related clothes are available under Men category.', 'imagenull'),
+(41, 'Women', 'all the Women Related are inside Women category', 'imagenull'),
+(43, 'Children', 'Children related clothes', 'imagenull'),
+(45, 'Games', 'Description of Category', 'imagenull');
 
 -- --------------------------------------------------------
 
@@ -181,10 +196,27 @@ CREATE TABLE `product_detail` (
 --
 
 INSERT INTO `product_detail` (`product_id`, `product_name`, `product_title`, `product_category`, `product_sub_category`, `product_sub_sub_category`, `product_status`, `product_price`, `product_discount`, `product_description`, `product_brand`, `meta_title`, `meta_keyword`) VALUES
-(38, 'shirt', '', 'men', 'men', 'men', 'option1', 23, 0, 'Product Description', '', '', ''),
-(39, 'saari', 'women saari', 'men', 'men', 'men', 'option1', 34, 0, 'Product Description', '', '', ''),
-(40, 'red saari', 'sari', 'men', 'men', 'men', 'published', 23, 0, 'Product Description', '', '', ''),
-(41, 'sari', '', 'men', 'men', 'men', 'option1', 22, 0, 'Product Description', '', '', '');
+(42, 'Saari', 'Red Saari', 'men', 'men', 'men', 'option1', 4000, 22, 'red saari', '', '', ''),
+(43, 'red sari', 'red saari', 'men', 'men', 'men', 'published', 3500, 0, 'women sari', '', '', ''),
+(44, 'red sari', 'red saari', 'men', 'men', 'men', 'published', 3500, 0, 'women sari', '', '', ''),
+(45, 'red sari', 'red saari', 'men', 'men', 'men', 'published', 3500, 0, 'women sari', '', '', ''),
+(46, 'shirt', 'male shirt', 'men', 'men', 'men', 'option1', 1200, 0, 'Male shirt', '', '', ''),
+(47, 'shirt', 'male shirt', 'men', 'men', 'men', 'option1', 1200, 0, 'Male shirt', '', '', ''),
+(48, 'shirt', 'male shirt', 'men', 'men', 'men', 'option1', 1200, 0, 'Male shirt', '', '', ''),
+(49, 'Black shirt', 'black shirt vest', 'men', 'men', 'men', 'published', 206, 0, 'Product Description', '', '', ''),
+(50, 'Black shirt', 'black shirt vest', 'men', 'men', 'men', 'published', 206, 0, 'Product Description', '', '', ''),
+(51, 'Black shirt', 'black shirt vest', 'men', 'men', 'men', 'published', 206, 0, 'Product Description', '', '', ''),
+(52, 'Black shirt', 'black shirt vest', 'men', 'men', 'men', 'published', 206, 0, 'Product Description', '', '', ''),
+(53, 'Black shirt', 'black shirt vest', 'men', 'men', 'men', 'published', 206, 0, 'Product Description', '', '', ''),
+(54, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(55, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(56, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(57, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(58, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(59, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(60, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(61, 'sari', 'sari', 'men', 'men', 'men', 'published', 2321, 0, 'Product Description', '', '', ''),
+(62, 'abc', 'abc', 'men', 'men', 'men', 'option1', 32423, 234, 'Product Description', '', 'zAXA', 'CCSSC');
 
 -- --------------------------------------------------------
 
@@ -229,9 +261,18 @@ CREATE TABLE `sub_category` (
 --
 
 INSERT INTO `sub_category` (`sub_categoryid`, `which_main_category`, `sub_categoryname`, `sub_categorydescription`, `sub_catogeryimage`) VALUES
-(11, 'men', 'shoes', 'Description of Category', 'imagenull'),
-(12, 'Women', 'lady bag', 'Description of Category', 'imagenull'),
-(13, 'Women', 'clothes', 'Description of Category', 'imagenull');
+(14, 'Men', 'Shoes', 'male shoes', 'imagenull'),
+(15, 'Men', 'CLOTHING', 'All the clothes are related to this clothes', 'imagenull'),
+(16, 'Men', 'Accessories', 'all other elements related to male example glass,male fashion etc', 'imagenull'),
+(17, 'Games', 'Basket Ball', 'Basket Ball', 'imagenull'),
+(18, 'Women', 'Clothing', 'all the clothes related female', 'imagenull'),
+(19, 'Women', 'Bag', 'Hand Bag', 'imagenull'),
+(20, 'Women', 'Accessories', 'female Accessories', 'imagenull'),
+(21, 'Women', 'Beauti-parler', 'Women Beuty Parler fashaion', 'imagenull'),
+(22, 'Children', 'CLOTHING', 'Description of Category', 'imagenull'),
+(23, 'Children', 'Sports', 'Chldren sports games', 'imagenull'),
+(24, 'Children', 'Shoes', 'child shoes', 'imagenull'),
+(25, 'Children', 'Accessories', 'Description of Category', 'imagenull');
 
 -- --------------------------------------------------------
 
@@ -253,9 +294,26 @@ CREATE TABLE `sub_sub_category` (
 --
 
 INSERT INTO `sub_sub_category` (`sub_sub_id`, `which_main_category`, `which_sub_category`, `sub_sub_name`, `sub_sub_description`, `sub_sub_image`) VALUES
-(13, 'men', 'shoes', 'runnning shoes', 'Description of Category', 'imagenull'),
-(14, 'Women', 'lady bag', 'hand bag', 'Description of Category', 'imagenull'),
-(15, 'Women', 'clothes', 'traditional clothes', 'Description of Category', 'imagenull');
+(18, 'Men', 'Shoes', 'All Shoes', 'Description of Category', 'imagenull'),
+(19, 'Men', 'Shoes', 'Running', 'Running shoes', 'imagenull'),
+(20, 'Men', 'Shoes', 'Training and Gym', 'Training and Gym shoes', 'imagenull'),
+(21, 'Men', 'Shoes', 'Gaming Shoes', 'Description of Category', 'imagenull'),
+(22, 'Men', 'CLOTHING', 'Sweater', 'winter season clothes sweater', 'imagenull'),
+(23, 'Men', 'CLOTHING', 'Shirt', 'Male shirt latest design', 'imagenull'),
+(24, 'Men', 'CLOTHING', 'Jeans', 'Jeans Paint latest designed', 'imagenull'),
+(25, 'Men', 'CLOTHING', 'Hawaiian shirt', '', 'imagenull'),
+(26, 'Men', 'CLOTHING', 'Gloves', 'Gloves', 'imagenull'),
+(27, 'Men', 'Accessories', 'Glass', 'male Glass', 'imagenull'),
+(28, 'Men', 'Accessories', 'Male Fashion', 'Male Fashion', 'imagenull'),
+(29, 'Men', 'Accessories', 'Watch', 'Male Watch', 'imagenull'),
+(30, 'Women', 'Clothing', 'SAARI', 'All saari', 'imagenull'),
+(31, 'Women', 'Clothing', 'traditional clothes', '', 'imagenull'),
+(32, 'Women', 'Clothing', 'Hindusm  clothes', 'hindu clothes', 'imagenull'),
+(33, 'Women', 'Bag', 'Hand Bag', 'Description of Category', 'imagenull'),
+(34, 'Women', 'Bag', 'Party Bag', 'Description of Category', 'imagenull'),
+(35, 'Women', 'Clothing', 'Lady Vest', 'Description of Category', 'imagenull'),
+(36, 'Children', 'CLOTHING', 'School dress', 'Description of Category', 'imagenull'),
+(37, 'Children', 'Sports', 'Pubg Gun', 'Pubg gun', 'imagenull');
 
 -- --------------------------------------------------------
 
@@ -276,13 +334,7 @@ CREATE TABLE `Temp_Cart` (
 --
 
 INSERT INTO `Temp_Cart` (`Temp_cart_id`, `temp_user_id`, `product_id`, `product_quantity`, `product_size`) VALUES
-(1, 18, 41, 1, 1),
-(2, 18, 39, 1, 1),
-(3, 18, 38, 1, 1),
-(4, 18, 40, 1, 1),
-(5, 18, 40, 1, 1),
-(6, 18, 40, 1, 1),
-(7, 18, 40, 1, 1);
+(36, 18, 46, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -293,6 +345,14 @@ INSERT INTO `Temp_Cart` (`Temp_cart_id`, `temp_user_id`, `product_id`, `product_
 CREATE TABLE `temp_user` (
   `cookies_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_user`
+--
+
+INSERT INTO `temp_user` (`cookies_user_id`) VALUES
+(41),
+(42);
 
 --
 -- Indexes for dumped tables
@@ -398,13 +458,13 @@ ALTER TABLE `CART`
 -- AUTO_INCREMENT for table `Customer_Authentication`
 --
 ALTER TABLE `Customer_Authentication`
-  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `main_category`
 --
 ALTER TABLE `main_category`
-  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `Product_CheckOut`
@@ -416,7 +476,7 @@ ALTER TABLE `Product_CheckOut`
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `product_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `product_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `size`
@@ -428,25 +488,25 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `sub_categoryid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_category`
 --
 ALTER TABLE `sub_sub_category`
-  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `sub_sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `Temp_Cart`
 --
 ALTER TABLE `Temp_Cart`
-  MODIFY `Temp_cart_id` int(44) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Temp_cart_id` int(44) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `temp_user`
 --
 ALTER TABLE `temp_user`
-  MODIFY `cookies_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `cookies_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

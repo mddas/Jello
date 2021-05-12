@@ -146,7 +146,7 @@ else{
             </ul>
       </div>
       <div class="navigation__column right">
-        <form class="ps-search--header" action="do_action" method="post">
+        <form class="ps-search--header"  method="GET">
           <input class="form-control" type="text" id="search" placeholder="Search Product…" onkeyup="Search_all();">
           <button><i class="ps-icon-search"></i></button>
           <!---here is search item to show up----->
